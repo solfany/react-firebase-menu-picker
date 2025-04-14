@@ -1,0 +1,45 @@
+name: 5분마다 테스트용 전체 DB 초기화
+
+on:
+  schedule:
+    - cron: '*/5 * * * *'  # 매 5분마다 실행 (UTC 기준)
+  workflow_dispatch:       # 수동 실행도 가능
+
+jobs:
+  reset:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Node.js 설치
+        uses: actions/setup-node@v3
+        with:
+          node-version: '18'
+
+      - name: Firebase Admin SDK로 DB 삭제
+        run: |
+          echo "$FIREBASE_SERVICE_ACCOUNT" > serviceAccountKey.json
+
+          npm init -y
+          npm install firebase-admin
+
+          node <<EOF
+          const admin = require("firebase-admin");
+          const serviceAccount = require("./serviceAccountKey.json");
+
+          admin.initializeApp({
+            credential: admin.credential.cert(serviceAccount),
+            databaseURL: process.env.FIREBASE_DATABASE_URL
+          });
+
+          admin.database().ref().remove()
+            .then(() => {
+              console.log("✅ Firebase 전체 데이터 초기화 완료");
+              process.exit(0);
+            })
+            .catch((err) => {
+              console.error("❌ 삭제 실패", err);
+              process.exit(1);
+            });
+          EOF
+        env:
+          FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}
+          FIREBASE_DATABASE_URL: ${{ secrets.FIREBASE_DATABASE_URL }}
