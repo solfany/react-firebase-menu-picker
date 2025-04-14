@@ -1,0 +1,14 @@
+{
+  "files": {
+    "main.css": "/react-firebase-menu-picker/static/css/main.2792ea50.css",
+    "main.js": "/react-firebase-menu-picker/static/js/main.289980c8.js",
+    "static/media/온글잎_박다현체.ttf": "/react-firebase-menu-picker/static/media/온글잎_박다현체.c9d387ff3f723e917bba.ttf",
+    "index.html": "/react-firebase-menu-picker/index.html",
+    "main.2792ea50.css.map": "/react-firebase-menu-picker/static/css/main.2792ea50.css.map",
+    "main.289980c8.js.map": "/react-firebase-menu-picker/static/js/main.289980c8.js.map"
+  },
+  "entrypoints": [
+    "static/css/main.2792ea50.css",
+    "static/js/main.289980c8.js"
+  ]
+}
