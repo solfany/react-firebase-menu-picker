@@ -9,8 +9,8 @@ import "./styles/globals.scss";
 const root = ReactDOM.createRoot(document.getElementById("root"));
 root.render(
   <React.StrictMode>
-      <BrowserRouter>
-          <App />
-      </BrowserRouter>
+    <BrowserRouter basename="/react-firebase-menu-picker">
+      <App />
+    </BrowserRouter>
   </React.StrictMode>
 );
