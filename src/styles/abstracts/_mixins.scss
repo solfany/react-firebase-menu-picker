@@ -1,0 +1,37 @@
+// 재사용 가능한 스타일을 정의하는 믹스인 파일입니다.
+// 이 파일은 SCSS에서 믹스인을 정의하여 코드의 재사용성을 높이고, 유지보수를 용이하게 합니다.
+// 믹스인은 특정 스타일을 재사용할 수 있는 블록으로, 필요할 때마다 호출하여 사용할 수 있습니다.
+// 믹스인을 사용하면 코드의 중복을 줄이고, 스타일을 일관되게 유지할 수 있습니다.
+// abstracts/_mixins.scss
+@use 'variables' as var;
+
+@mixin flex-center {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+@mixin container {
+  margin: 1.1rem;
+  padding: 1.1rem;
+}
+
+@mixin responsive($breakpoint) {
+  @if $breakpoint == sm {
+    @media (max-width: var.$breakpoint-sm) {
+      @content;
+    }
+  } @else if $breakpoint == md {
+    @media (max-width: var.$breakpoint-md) {
+      @content;
+    }
+  } @else if $breakpoint == lg {
+    @media (max-width: var.$breakpoint-lg) {
+      @content;
+    }
+  } @else if $breakpoint == xl {
+    @media (max-width: var.$breakpoint-xl) {
+      @content;
+    }
+  }
+}

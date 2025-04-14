@@ -1,0 +1,60 @@
+@use "../styles/abstracts/variables" as var;
+
+.stats-left,
+.stats-right {
+  flex: 1 1 48%;
+  background-color: var.$card-bg;
+  padding: var.$padding-md;
+  border-radius: var.$radius-lg;
+  box-shadow: var.$shadow-card;
+}
+
+.stats-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin-top: var.$gap-sm;
+
+  th,
+  td {
+    border: 1px solid var.$border-color;
+    padding: 0.75rem;
+    text-align: left;
+    font-size: 0.95rem;
+  }
+
+  th {
+    background-color: var.$color-gray-100;
+    color: var.$text-color;
+    font-weight: 600;
+  }
+
+  tr:nth-child(even) {
+    background-color: var.$color-gray-100;
+  }
+}
+
+.menu-summary {
+  list-style: none;
+  padding: 0;
+  margin-top: var.$gap-sm;
+
+  .menu-item {
+    display: flex;
+    justify-content: space-between;
+    padding: 0.75rem;
+    border: 1px solid var.$border-color;
+    border-radius: var.$radius-md;
+    margin-bottom: 0.5rem;
+    background-color: var.$color-white;
+    font-size: 0.95rem;
+
+    .menu-name {
+      font-weight: 500;
+    }
+
+    .menu-count {
+      color: var.$color-primary;
+      font-weight: 600;
+    }
+  }
+}

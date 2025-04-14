@@ -1,0 +1,42 @@
+@use "../../styles/abstracts/mixins" as mixins;
+@use "../../styles/abstracts/variables" as var;
+
+.menu-select-container {
+  width: 100%;
+  gap: var.$gap-sm;
+  display: inline-grid;
+  .header-card {
+    margin-bottom: var.$margin-md;
+  }
+  
+  .header-content {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    
+    @media (max-width: var.$breakpoint-md) {
+      flex-direction: column;
+      align-items: flex-start;
+      gap: var.$gap-sm;
+    }
+  }
+  
+  .user-prompt {
+    font-size: var.$font-size-header-xs;
+    font-weight: 500;
+    color: var.$text-color;
+    margin: 0;
+  }
+  
+  .menu-buttons {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(150px, 1fr));
+    gap: var.$gap-md;
+    margin-top: var.$margin-lg;
+    
+    .menu-button {
+      padding: var.$padding-md;
+      font-size: 1rem;
+    }
+  }
+}

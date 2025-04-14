@@ -1,0 +1,96 @@
+@import '../../styles/abstracts/variables'; // 변수 파일 경로에 맞게 조정해 주세요
+
+.pie-chart-container {
+  background-color: $card-bg;
+  border-radius: $radius-md;
+  box-shadow: $shadow-card;
+  padding: $padding-lg;
+  
+  .chart-title {
+    font-size: $font-size-header-xs;
+    color: $text-color;
+    margin-bottom: $margin-md;
+    text-align: center;
+    font-weight: 500;
+  }
+  
+  .chart-wrapper {
+    max-width: 300px;
+    margin: 0 auto $margin-lg auto;
+  }
+  
+  .legend-container {
+    display: flex;
+    flex-direction: column;
+    gap: $gap-xs;
+    margin-bottom: $margin-md;
+    border-top: $border;
+    padding-top: $padding-md;
+    
+    .legend-item {
+      display: flex;
+      align-items: center;
+      padding: $padding-sm;
+      transition: background-color 0.2s;
+      border-radius: $radius-sm;
+      
+      &:hover {
+        background-color: $color-gray-100;
+      }
+      
+      .color-box {
+        width: 14px;
+        height: 14px;
+        border-radius: $radius-sm;
+        margin-right: $margin-sm;
+      }
+      
+      .label {
+        flex: 1;
+        font-weight: 500;
+        color: $text-color;
+      }
+      
+      .value {
+        margin: 0 $margin-md;
+        color: $text-color;
+      }
+      
+      .percentage {
+        font-weight: 600;
+        color: $color-primary;
+        min-width: 40px;
+        text-align: right;
+      }
+    }
+  }
+  
+  .total-info {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    border-top: $border;
+    padding-top: $padding-md;
+    
+    .label {
+      font-weight: 500;
+      color: $text-subtle;
+    }
+    
+    .value {
+      font-weight: 600;
+      font-size: $font-size-header-xs;
+      color: $text-color;
+    }
+  }
+}
+
+@media (max-width: $breakpoint-md) {
+  .pie-chart-container {
+    padding: $padding-md;
+    
+    .chart-wrapper {
+      max-width: 240px;
+    }
+  }
+}

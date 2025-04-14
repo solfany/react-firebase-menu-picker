@@ -1,0 +1,44 @@
+@use "../../styles/abstracts/variables" as var;
+@use "../../styles/abstracts/mixins" as mixins;
+
+.default-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var.$padding-sm var.$padding-md;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: var.$radius-md;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  box-shadow: var.$shadow-card;
+  background-color: var.$color-gray-100;
+  color: var.$text-color;
+  border: var.$border;
+  //  확장 가능한 modifier 클래스들
+  &.selected {
+    background-color: var.$color-primary;
+    color: var.$color-white;
+  }
+
+  &.unselected {
+    background-color: var.$color-gray-100;
+    color: var.$color-gray-500;
+
+    &:hover {
+      background-color: var.$color-gray-200;
+    }
+  }
+
+  &.nav-button {
+    background-color: transparent;
+    color: var.$color-primary;
+    font-weight: 600;
+    text-decoration: underline;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

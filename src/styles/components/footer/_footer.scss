@@ -1,0 +1,17 @@
+@use '../../abstracts/variables' as var;
+@use '../../abstracts/mixins' as *;
+
+.footer {
+  width: 100%;
+  padding: 16px 24px;
+  background-color: #333;
+  color: var.$white;
+  text-align: center;
+  font-size: 0.9rem;
+  line-height: 1.4;
+  margin-top: auto;
+
+  a {
+    color: var.$white;
+  }
+}

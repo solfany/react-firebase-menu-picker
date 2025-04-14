@@ -1,0 +1,26 @@
+@use '../../abstracts/variables' as var;
+@use '../../abstracts/mixins' as *;
+
+// src/components/Header.scss
+.lunch-header {
+  background-color: #ffecd1;
+  padding: 1rem 2rem;
+  text-align: center;
+  border-bottom: 2px solid #f4a261;
+
+  .lunch-title {
+    margin: 0;
+    font-size: 2rem;
+    color: #264653;
+    font-weight: bold;
+    letter-spacing: -0.5px;
+
+    @media (max-width: 768px) {
+      font-size: 1.5rem;
+    }
+
+    @media (max-width: 480px) {
+      font-size: 1.2rem;
+    }
+  }
+}

@@ -1,0 +1,18 @@
+@use '../../abstracts/variables' as var;
+
+.content {
+  padding: var.$spacing-md;
+  margin: 0 auto;
+  box-sizing: border-box;
+  margin: 1rem;
+  flex: 1;
+
+  &.center {
+    text-align: center;
+  }
+
+  // 예시: 여백 줄이기
+  &.compact {
+    padding: var.$spacing-sm;
+  }
+}
