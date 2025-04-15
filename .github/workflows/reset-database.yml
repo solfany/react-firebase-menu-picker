@@ -1,8 +1,8 @@
-name: 5분마다 테스트용 전체 DB 초기화
+name: 매일 오후 5시 Firebase 전체 데이터 초기화
 
 on:
   schedule:
-    - cron: "*/5 * * * *"
+    - cron: "0 8 * * *"
   workflow_dispatch:
 
 jobs:
