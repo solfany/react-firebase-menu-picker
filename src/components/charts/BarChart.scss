@@ -1,15 +1,16 @@
-@use "../../../src/styles/abstracts/mixins" as mixins;
+@use "../../../src/styles/abstracts/mixins" as *;
 @use "../../../src/styles/abstracts/variables" as var;
 
-.bar-chart-container {
-  width: 100%;
-  padding: var.$padding-md;
-  background-color: var.$card-bg;
-  border-radius: var.$radius-md;
-  box-shadow: var.$shadow-card;
-  box-sizing: border-box;
-}
 
+.bar-chart-container {
+  padding: var.$padding-md;
+}
+.chart-title {
+  @include chart-title;
+}
+.chart-wrapper{
+  padding:  10px 0;
+}
 .chart-info {
   margin-top: var.$gap-md;
   display: flex;

@@ -20,8 +20,7 @@ const BarChart = () => {
   const votedCount = userVotes.length;
   const notVotedCount = totalUsers - votedCount;
 
-  if (loading) return <p className="loading-text">차트 데이터를 불러오는 중입니다...</p>;
-
+  // 데이터가 없어도 0으로 표시하여 차트 렌더링
   const data = {
     labels: ['주문 완료', '미주문'],
     datasets: [
@@ -42,12 +41,10 @@ const BarChart = () => {
     plugins: {
       title: {
         display: true,
-        text: '주문 현황',
         color: '#1e2b3c',
         font: {
           size: 18,
           weight: '500',
-          family: "'GmarketSansMedium', sans-serif"
         },
         padding: { bottom: 16 },
         align: 'center'
@@ -75,27 +72,37 @@ const BarChart = () => {
     }
   };
 
-  return (
-    <div className="bar-chart-container">
-      <Bar data={data} options={options} />
+  if (loading) return <p className="loading-text">로딩 중입니다...</p>;
 
-      <div className="chart-info">
-        <div className="legend-item">
-          <span className="color-indicator primary" />
-          <span className="label">주문 완료</span>
-          <span className="value">{votedCount}명</span>
-        </div>
-        <div className="legend-item">
-          <span className="color-indicator danger" />
-          <span className="label">미주문</span>
-          <span className="value">{notVotedCount}명</span>
-        </div>
-        <div className="total-info">
-          <span className="label">총 인원</span>
-          <span className="value">{totalUsers}명</span>
-        </div>
-      </div>
+  return (
+<div className="bar-chart-container">
+  <h3 className="chart-title">주문 현황</h3>
+  <div className="chart-wrapper">
+    <Bar data={data} options={options} />
+  </div>
+
+  {votedCount === 0 && (
+    <p className="no-vote-text">현재 투표 데이터가 없습니다.</p>
+  )}
+
+  <div className="chart-info">
+    <div className="legend-item">
+      <span className="color-indicator primary" />
+      <span className="label">주문 완료</span>
+      <span className="value">{votedCount}명</span>
     </div>
+    <div className="legend-item">
+      <span className="color-indicator danger" />
+      <span className="label">미주문</span>
+      <span className="value">{notVotedCount}명</span>
+    </div>
+    <div className="total-info">
+      <span className="label">총 인원</span>
+      <span className="value">{totalUsers}명</span>
+    </div>
+  </div>
+</div>
+
   );
 };
 

@@ -11,7 +11,9 @@
 $font-default: 'Pretendard', sans-serif;
 $font-logo: 'Paperlogy-8ExtraBold', sans-serif;
 // $font-body: 'BMJUA', sans-serif;
-$font-body: 'GmarketSansMedium', sans-serif;
+// $font-body: 'GmarketSansMedium', sans-serif;
+$font-body: 'Pretendard-Regular', sans-serif;
+
 // =============================
 // ⚪ Base Colors
 // =============================
@@ -30,8 +32,7 @@ $color-gray-400:     #d1d6db;
 $color-gray-500:     #8b95a1;
 $color-primary:      #3182f6;
 $color-danger:       #ff5a5a;
-$spacing-gap-sm:     1rem;
-$spacing-gap-md:     1.5rem;
+
 
 
 // =============================
@@ -45,7 +46,7 @@ $default-blur-bg: rgba(255, 255, 255, 0.8);
 // =============================
 $shadow-card:        0 1px 4px rgba(0, 0, 0, 0.05);
 $shadow-default: 0 8px 20px rgba(0, 0, 0, 0.08);
-$shadow-scrolled: 0 2px 8px rgba(0, 0, 0, 0.2);
+$shadow-scrolled: 0 2px 8px rgba(0, 0, 0, 0.05);
 
 
 // Radius (둥글기)
@@ -72,6 +73,7 @@ $gap-lg:             2rem;     // 32px
 // =============================
 // ⚙ Common Font Sizes (추가)
 // =============================
+$font-size-header-ml: 1.8rem;
 $font-size-header: 1.5rem;
 $font-size-header-md: 1.4rem;
 $font-size-header-sm: 1.3rem;
@@ -100,6 +102,6 @@ $breakpoint-5xl: 3840px;
 $text-color:         $color-black;
 $text-subtle:        $color-gray-500;
 $background-color:   $color-gray-100;
-$border-color:       $color-gray-300;
 $card-bg:            $color-white;
-$border:         1px solid $border-color;
+$border-dark:         1px solid $color-gray-300;
+$border-light:  1px solid $color-gray-200;

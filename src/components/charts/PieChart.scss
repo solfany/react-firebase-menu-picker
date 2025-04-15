@@ -1,64 +1,60 @@
-@import '../../styles/abstracts/variables'; // 변수 파일 경로에 맞게 조정해 주세요
-
+@use "../../../src/styles/abstracts/mixins" as *;
+@use '../../styles/abstracts/variables' as var;
+.no-vote-text {
+  @include no-vote-text;
+}
 .pie-chart-container {
-  background-color: $card-bg;
-  border-radius: $radius-md;
-  box-shadow: $shadow-card;
-  padding: $padding-lg;
+  padding: var.$padding-md;
   
   .chart-title {
-    font-size: $font-size-header-xs;
-    color: $text-color;
-    margin-bottom: $margin-md;
-    text-align: center;
-    font-weight: 500;
+    @include chart-title;
   }
-  
   .chart-wrapper {
-    max-width: 300px;
-    margin: 0 auto $margin-lg auto;
+    max-width: 220px;
+    margin: 0 auto var.$padding-lg auto;
+    justify-items: center;
   }
   
   .legend-container {
     display: flex;
     flex-direction: column;
-    gap: $gap-xs;
-    margin-bottom: $margin-md;
-    border-top: $border;
-    padding-top: $padding-md;
+    gap: var.$gap-xs;
+    margin-bottom: var.$margin-md;
+    border-top: var.$border-dark;
+    padding-top: var.$padding-md;
     
     .legend-item {
       display: flex;
       align-items: center;
-      padding: $padding-sm;
+      padding: var.$padding-sm;
       transition: background-color 0.2s;
-      border-radius: $radius-sm;
+      border-radius: var.$radius-sm;
       
       &:hover {
-        background-color: $color-gray-100;
+        background-color: var.$color-gray-100;
       }
       
       .color-box {
         width: 14px;
         height: 14px;
-        border-radius: $radius-sm;
-        margin-right: $margin-sm;
+        border-radius: var.$radius-sm;
+        margin-right: var.$margin-sm;
       }
       
       .label {
         flex: 1;
         font-weight: 500;
-        color: $text-color;
+        color: var.$text-color;
       }
       
       .value {
-        margin: 0 $margin-md;
-        color: $text-color;
+        margin: 0 var.$margin-md;
+        color: var.$text-color;
       }
       
       .percentage {
         font-weight: 600;
-        color: $color-primary;
+        color: var.$color-primary;
         min-width: 40px;
         text-align: right;
       }
@@ -69,25 +65,25 @@
     display: flex;
     justify-content: space-between;
     align-items: center;
-    border-top: $border;
-    padding-top: $padding-md;
+    border-top: var.$border-dark;
+    padding-top: var.$padding-md;
     
     .label {
       font-weight: 500;
-      color: $text-subtle;
+      color: var.$text-subtle;
     }
     
     .value {
       font-weight: 600;
-      font-size: $font-size-header-xs;
-      color: $text-color;
+      font-size: var.$font-size-header-xs;
+      color: var.$text-color;
     }
   }
 }
 
-@media (max-width: $breakpoint-md) {
+@media (max-width: var.$breakpoint-md) {
   .pie-chart-container {
-    padding: $padding-md;
+    padding: var.$padding-md;
     
     .chart-wrapper {
       max-width: 240px;

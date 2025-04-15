@@ -22,6 +22,7 @@ body {
   background-color: #fff;
   color: var.$text-color;
   scroll-behavior: smooth;
+  overflow-y: scroll; // 스크롤바 항상 공간 차지
 }
 
 /* ===============================

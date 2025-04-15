@@ -16,20 +16,71 @@
   padding: 1.1rem;
 }
 
+@mixin no-vote-text {
+  font-size: 1rem;
+  color: #8b95a1;
+  text-align: center;
+  font-weight: 500;
+  background-color: #f8f9fa;
+  padding: 0.8rem;
+  border-radius: 8px;
+  margin: 1.5rem auto;
+  max-width: 100%;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
+  border: 1px solid #e5e8eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+
+  &::before {
+    content: "!";
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 22px;
+    height: 22px;
+    background-color: #e9ecef;
+    border-radius: 50%;
+    margin-right: 8px;
+    font-weight: 700;
+    color: #6c757d;
+  }
+}
+
+@mixin chart-title {
+  font-size: var.$font-size-header-xs;
+  color: var.$text-color;
+  margin-bottom: var.$margin-md;
+  text-align: center;
+  font-weight: 500;
+}
+
+@mixin department-vote {
+  display: flex;
+  flex-direction: column;
+  gap: var.$gap-sm;
+}
+
 @mixin responsive($breakpoint) {
-  @if $breakpoint == sm {
+  @if $breakpoint ==sm {
     @media (max-width: var.$breakpoint-sm) {
       @content;
     }
-  } @else if $breakpoint == md {
+  }
+
+  @else if $breakpoint ==md {
     @media (max-width: var.$breakpoint-md) {
       @content;
     }
-  } @else if $breakpoint == lg {
+  }
+
+  @else if $breakpoint ==lg {
     @media (max-width: var.$breakpoint-lg) {
       @content;
     }
-  } @else if $breakpoint == xl {
+  }
+
+  @else if $breakpoint ==xl {
     @media (max-width: var.$breakpoint-xl) {
       @content;
     }

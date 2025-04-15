@@ -12,10 +12,9 @@
   border-radius: var.$radius-md;
   cursor: pointer;
   transition: all 0.2s ease;
-  box-shadow: var.$shadow-card;
   background-color: var.$color-gray-100;
   color: var.$text-color;
-  border: var.$border;
+  border: var.$border-dark;
   //  확장 가능한 modifier 클래스들
   &.selected {
     background-color: var.$color-primary;

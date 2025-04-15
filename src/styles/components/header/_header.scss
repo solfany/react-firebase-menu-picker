@@ -1,26 +1,76 @@
 @use '../../abstracts/variables' as var;
 @use '../../abstracts/mixins' as *;
 
-// src/components/Header.scss
 .lunch-header {
-  background-color: #ffecd1;
-  padding: 1rem 2rem;
-  text-align: center;
-  border-bottom: 2px solid #f4a261;
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  padding: var.$padding-md 0;
+  transition: all 0.3s ease;
+  height: 6rem;
+  display: flex;
+  align-items: center;
 
-  .lunch-title {
-    margin: 0;
-    font-size: 2rem;
-    color: #264653;
-    font-weight: bold;
-    letter-spacing: -0.5px;
+  &__backdrop {
+    position: absolute;
+    inset: 0;
+    backdrop-filter: blur(8px);
+    z-index: -1;
+    border: 1px solid #117dff54;
+    background: #f0f8ffa3;
+  }
 
-    @media (max-width: 768px) {
-      font-size: 1.5rem;
+
+  &__container {
+    width: 100%;
+    max-width: 1200px;
+    margin: 0 auto;
+    padding: 0 var.$padding-lg;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  &__title {
+    display: flex;
+    gap: var.$gap-xs;
+
+    &-text {
+      font-size: var.$font-size-header-md;
+      color: var.$text-subtle;
     }
 
-    @media (max-width: 480px) {
-      font-size: 1.2rem;
+    &-highlight {
+      font-size: var.$font-size-header-md;
+      color: var.$color-primary;
+      font-weight: 700;
+    }
+  }
+
+  &__nav {
+    display: flex;
+    gap: var.$gap-sm;
+  }
+
+  &__link {
+    padding: 0.5rem 1.2rem;
+    font-size: var.$font-size-nav;
+    font-weight: 500;
+    border-radius: var.$radius-md;
+    color: var.$text-color;
+    background-color: var.$color-white;
+    border: 1px solid var.$color-gray-300;
+    text-decoration: none;
+    transition: background-color 0.2s;
+
+    &.active {
+      background-color: var.$color-primary;
+      color: var.$white;
+    }
+
+    &:hover {
+      background-color: var.$color-primary;
+      color: var.$white;
     }
   }
 }
