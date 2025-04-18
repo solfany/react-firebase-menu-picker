@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/react-firebase-menu-picker/static/css/main.c1d6ae17.css",
-    "main.js": "/react-firebase-menu-picker/static/js/main.45ab9f2f.js",
-    "static/media/온글잎_박다현체.ttf": "/react-firebase-menu-picker/static/media/온글잎_박다현체.c9d387ff3f723e917bba.ttf",
+    "main.css": "/react-firebase-menu-picker/static/css/main.e16a427d.css",
+    "main.js": "/react-firebase-menu-picker/static/js/main.ff82ef22.js",
     "index.html": "/react-firebase-menu-picker/index.html",
-    "main.c1d6ae17.css.map": "/react-firebase-menu-picker/static/css/main.c1d6ae17.css.map",
-    "main.45ab9f2f.js.map": "/react-firebase-menu-picker/static/js/main.45ab9f2f.js.map"
+    "main.e16a427d.css.map": "/react-firebase-menu-picker/static/css/main.e16a427d.css.map",
+    "main.ff82ef22.js.map": "/react-firebase-menu-picker/static/js/main.ff82ef22.js.map"
   },
   "entrypoints": [
-    "static/css/main.c1d6ae17.css",
-    "static/js/main.45ab9f2f.js"
+    "static/css/main.e16a427d.css",
+    "static/js/main.ff82ef22.js"
   ]
 }
