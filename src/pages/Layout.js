@@ -5,16 +5,16 @@ import Header from "../components/header/Header";
 import Footer from "../components/footer/Footer";
 import "../styles/layout/_layout.scss";
 // import Container from "../components/container/Container";
-import Container from "../components/container/Container"
+import DefaultContainer from "../components/container/DefaultContainer/DefaultContainer"
 const Layout = ({ children }) => {
   const location = useLocation();
   return (
     <div className="app-container">
       <Header />
       <main>
-        <Container>
+        <DefaultContainer>
           {children}
-        </Container>
+        </DefaultContainer>
       </main>
       <Footer />
     </div>

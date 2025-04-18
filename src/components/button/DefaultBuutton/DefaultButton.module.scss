@@ -1,5 +1,5 @@
-@use "../../styles/abstracts/variables" as var;
-@use "../../styles/abstracts/mixins" as mixins;
+@use "../../../styles/abstracts/variables" as var;
+@use "../../../styles/abstracts/mixins" as *;
 
 .default-button {
   display: inline-flex;
@@ -15,7 +15,7 @@
   background-color: var.$color-gray-100;
   color: var.$text-color;
   border: var.$border-dark;
-  //  확장 가능한 modifier 클래스들
+
   &.selected {
     background-color: var.$color-primary;
     color: var.$color-white;

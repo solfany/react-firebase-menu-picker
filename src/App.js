@@ -2,14 +2,18 @@ import React from 'react';
 import Layout from './pages/Layout';
 import AppRoutes from './routes/AppRoutes';
 import { VoteProvider } from './context/VoteProvider';
-import Toast from './components/toast/Toast';
+import { ToastProvider } from './context/ToastProvider';
+import DefaultToast from './components/toast/DefaultToast/DefaultToast';
 
 const App = () => {
   return (
     <VoteProvider>
-      <Layout>
-        <AppRoutes />
-      </Layout>
+      <ToastProvider>
+        <Layout>
+          <AppRoutes />
+          <DefaultToast />
+        </Layout>
+      </ToastProvider>
     </VoteProvider>
   );
 };

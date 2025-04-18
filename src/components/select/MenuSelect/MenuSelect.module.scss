@@ -1,5 +1,5 @@
-@use "../../styles/abstracts/mixins" as mixins;
-@use "../../styles/abstracts/variables" as var;
+@use "../../../styles/abstracts/mixins" as *;
+@use "../../../styles/abstracts/variables" as var;
 
 .menu-select-container {
   width: 100%;

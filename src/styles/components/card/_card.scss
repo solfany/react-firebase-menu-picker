@@ -38,19 +38,19 @@
   transition: all 0.3s ease;
   box-shadow: var.$shadow-default;
 
-  &__header {
+  &-header {
     border-bottom: var.$border-light;
   }
 
-  &__info {
+  &-info {
     margin-bottom: var.$margin-lg;
     display: flex;
     flex-direction: column;
     gap: var.$gap-sm;
   }
 
-  &__date-info,
-  &__user-info {
+  &-date-info,
+  &-user-info {
     display: flex;
     align-items: center;
     gap: var.$gap-xs;
@@ -61,7 +61,7 @@
     }
   }
 
-  &__menu {
+  &-menu {
     border-radius: var.$radius-md;
     padding: var.$padding-md var.$padding-lg;
     max-height: 350px;
@@ -77,26 +77,26 @@
     }
   }
 
-  &__menu-title {
+  &-menu-title {
     font-size: 1.3rem;
     font-weight: 600;
     color: var.$text-color;
     margin-bottom: var.$margin-md;
   }
 
-  &__categories {
+  &-categories {
     display: flex;
     flex-direction: column;
     gap: var.$gap-md;
   }
 
-  &__category-block {
+  &-category-block {
     display: flex;
     flex-direction: column;
     gap: var.$gap-sm;
   }
 
-  &__category-title {
+  &-category-title {
     display: flex;
     justify-content: space-between;
     font-size: 1.2rem;
@@ -104,11 +104,11 @@
     color: var.$color-primary;
   }
 
-  &__category-count {
+  &-category-count {
     font-size: 0.75rem;
   }
 
-  &__menu-list {
+  &-menu-list {
     display: grid;
     grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
     gap: 0.5rem;
@@ -117,7 +117,7 @@
     padding: 0;
   }
 
-  &__menu-item {
+  &-menu-item {
     position: relative;
     padding: var.$padding-sm var.$padding-md var.$padding-sm 1rem;
     font-size: 1rem;
@@ -145,7 +145,7 @@
   max-width: 100%;   
   flex-shrink: 0;    
 
-  &__header {
+  &-header {
     border-radius: var.$radius-md;
     background-color: #fef2f2;
     padding: var.$padding-sm var.$padding-md;
@@ -155,7 +155,7 @@
     gap: var.$gap-lg;
   }
 
-  &__title {
+  &-title {
     display: flex;
     align-items: center;
     gap: var.$gap-xs;
@@ -173,7 +173,7 @@
     }
   }
 
-  &__badge {
+  &-badge {
     background-color: var.$color-danger;
     color: var.$white;
     font-size: 0.8rem;
@@ -183,11 +183,11 @@
     text-align: center;
   }
 
-  &__content {
+  &-content {
     padding: 0 var.$padding-md var.$padding-md var.$padding-md;
   }
 
-  &__empty {
+  &-empty {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -203,7 +203,7 @@
     }
   }
 
-  &__list {
+  &-list {
     list-style-type: none;
     padding: 0;
     margin: 0;
@@ -225,7 +225,7 @@
     }
   }
 
-  &__list-item {
+  &-list-item {
     display: flex;
     align-items: center;
     gap: var.$gap-xs;
@@ -243,7 +243,7 @@
     }
   }
 
-  &__department {
+  &-department {
     color: var.$text-subtle;
     font-weight: 500;
     background-color: var.$color-gray-200;
@@ -253,7 +253,7 @@
     flex-shrink: 0;
   }
 
-  &__name {
+  &-name {
     color: #4b5563;
     font-weight: 500;
   }

@@ -1,7 +1,10 @@
-@use "../../../src/styles/abstracts/mixins" as *;
-@use "../../../src/styles/abstracts/variables" as var;
+/* BarChart.module.scss */
+@use "../../../styles/abstracts/mixins" as *;
+@use "../../../styles/abstracts/variables" as var;
 
-
+.no-vote-text {
+  @include no-vote-text;
+}
 .bar-chart-container {
   padding: var.$padding-md;
 }

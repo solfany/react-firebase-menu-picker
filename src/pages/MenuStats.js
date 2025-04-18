@@ -1,19 +1,19 @@
 import React from 'react';
-import PieChart from '../components/charts/PieChart';
-import BarChart from '../components/charts/BarChart';
-import FlexSection from '../components/section/FlexSection';
-import Card from '../components/card/Card';
+import PieChart from '../components/charts/PieChart/PieChart';
+import BarChart from '../components/charts/BarChart/BarChart';
+import FlexSection from '../components/section/FlexSection/FlexSection';
+import DefaultCard from '../components/card/DefaultCard/DefaultCard';
 
 const MenuStats = () => {
     return (
         <>
             <FlexSection>
-                <Card className="chart-card">
+                <DefaultCard className="chart-card">
                     <PieChart />
-                </Card>
-                <Card className="chart-card">
+                </DefaultCard>
+                <DefaultCard className="chart-card">
                     <BarChart />
-                </Card>
+                </DefaultCard>
             </FlexSection>
         </>
     );

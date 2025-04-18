@@ -1,8 +1,8 @@
 import React from 'react';
-import Card from '../components/card/Card';
-import Title from '../components/title/Title';
-import "./Stats.scss";
-import FlexSection from '../components/section/FlexSection';
+import Card from '../components/card/DefaultCard/DefaultCard';
+import Title from '../components/title/DefaultTitle/DefaultTitle';
+import "../styles/pages/_stats.scss";
+import FlexSection from '../components/section/FlexSection/FlexSection';
 import { useVoteData } from '../context/VoteProvider';
 
 const Stats = () => {

@@ -1,5 +1,10 @@
 import React from 'react';
 import { Bar } from 'react-chartjs-2';
+import styles from './BarChart.module.scss';
+import users from '../../../data/users.json';
+import { useVoteData } from '../../../context/VoteProvider';
+import LoadingSpinner from '../../loading/LoadingSpinner/LoadingSpinner';
+
 import {
   Chart as ChartJS,
   CategoryScale,
@@ -8,9 +13,6 @@ import {
   Title,
   Tooltip,
 } from 'chart.js';
-import './BarChart.scss';
-import { useVoteData } from '../../context/VoteProvider';
-import users from '../../data/users.json';
 
 ChartJS.register(CategoryScale, LinearScale, BarElement, Title, Tooltip);
 
@@ -20,7 +22,6 @@ const BarChart = () => {
   const votedCount = userVotes.length;
   const notVotedCount = totalUsers - votedCount;
 
-  // 데이터가 없어도 0으로 표시하여 차트 렌더링
   const data = {
     labels: ['주문 완료', '미주문'],
     datasets: [
@@ -72,37 +73,39 @@ const BarChart = () => {
     }
   };
 
-  if (loading) return <p className="loading-text">로딩 중입니다...</p>;
+  if (loading) return <LoadingSpinner size={32} />;
 
   return (
-<div className="bar-chart-container">
-  <h3 className="chart-title">주문 현황</h3>
-  <div className="chart-wrapper">
-    <Bar data={data} options={options} />
-  </div>
+    <div className={styles['bar-chart-container']}>
+      <h3 className={styles['chart-title']}>주문 현황</h3>
 
-  {votedCount === 0 && (
-    <p className="no-vote-text">현재 투표 데이터가 없습니다.</p>
-  )}
+      <div className={styles['chart-wrapper']}>
+        <Bar data={data} options={options} />
+      </div>
 
-  <div className="chart-info">
-    <div className="legend-item">
-      <span className="color-indicator primary" />
-      <span className="label">주문 완료</span>
-      <span className="value">{votedCount}명</span>
-    </div>
-    <div className="legend-item">
-      <span className="color-indicator danger" />
-      <span className="label">미주문</span>
-      <span className="value">{notVotedCount}명</span>
-    </div>
-    <div className="total-info">
-      <span className="label">총 인원</span>
-      <span className="value">{totalUsers}명</span>
-    </div>
-  </div>
-</div>
+      {votedCount === 0 && (
+        <p className={styles['no-vote-text']}>현재 투표 데이터가 없습니다.</p>
+      )}
 
+      <div className={styles['chart-info']}>
+        <div className={styles['legend-item']}>
+          <span className={`${styles['color-indicator']} ${styles['primary']}`} />
+          <span className={styles['label']}>주문 완료</span>
+          <span className={styles['value']}>{votedCount}명</span>
+        </div>
+
+        <div className={styles['legend-item']}>
+          <span className={`${styles['color-indicator']} ${styles['danger']}`} />
+          <span className={styles['label']}>미주문</span>
+          <span className={styles['value']}>{notVotedCount}명</span>
+        </div>
+
+        <div className={styles['total-info']}>
+          <span className={styles['label']}>총 인원</span>
+          <span className={styles['value']}>{totalUsers}명</span>
+        </div>
+      </div>
+    </div>
   );
 };
 

@@ -1,7 +1,16 @@
-// src/styles/components/_section.scss
-@use '../abstracts/variables' as var;
-@use '../abstracts/mixins' as *;
-
+.flex-section {
+    display: flex;
+    flex-wrap: nowrap;
+    align-items: flex-start;
+    justify-content: space-between;
+    gap: 2rem;
+  
+    @media (max-width: 768px) {
+      flex-direction: column;
+      gap: 1.5rem;
+    }
+  }
+  
 .section {
   padding: 20px;
   margin: 20px;
@@ -10,12 +19,4 @@
   &.with-border {
     border-bottom: 1px solid #e5e7eb;
   }
-}
-
-// _flex-section.scss
-.flex-section {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  gap: var.$gap-md;
 }

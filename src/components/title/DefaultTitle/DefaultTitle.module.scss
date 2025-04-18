@@ -1,5 +1,5 @@
-@use "../../abstracts/variables" as var;
-@use "../../abstracts/mixins" as *;
+@use "../../../styles/abstracts/mixins" as *;
+@use "../../../styles/abstracts/variables" as var;
 
 .app-title {
   display: inline-flex;

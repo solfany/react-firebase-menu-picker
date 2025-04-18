@@ -1,6 +1,5 @@
 import React from 'react';
-import '../../styles/components/card/_card.scss'
-
+import "../../../styles/components/card/_card.scss"
 const Card = ({ children, className = '' }) => {
   return (
     <div className={`card ${className}`}>

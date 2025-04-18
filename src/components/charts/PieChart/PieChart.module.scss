@@ -1,5 +1,6 @@
-@use "../../../src/styles/abstracts/mixins" as *;
-@use '../../styles/abstracts/variables' as var;
+@use "../../../styles/abstracts/mixins" as *;
+@use "../../../styles/abstracts/variables" as var;
+
 .no-vote-text {
   @include no-vote-text;
 }

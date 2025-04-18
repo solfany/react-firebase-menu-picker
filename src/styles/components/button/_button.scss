@@ -1,0 +1,45 @@
+// src/styles/components/Button/_Button.scss
+
+@use "../../abstracts/variables" as var;
+@use "../../abstracts/mixins" as *;
+
+.default-button {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  padding: var.$padding-sm var.$padding-md;
+  font-size: 1rem;
+  font-weight: 500;
+  border: none;
+  border-radius: var.$radius-md;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  background-color: var.$color-gray-100;
+  color: var.$text-color;
+  border: var.$border-dark;
+
+  &.selected {
+    background-color: var.$color-primary;
+    color: var.$color-white;
+  }
+
+  &.unselected {
+    background-color: var.$color-gray-100;
+    color: var.$color-gray-500;
+
+    &:hover {
+      background-color: var.$color-gray-200;
+    }
+  }
+
+  &.nav-button {
+    background-color: transparent;
+    color: var.$color-primary;
+    font-weight: 600;
+    text-decoration: underline;
+
+    &:hover {
+      opacity: 0.8;
+    }
+  }
+}

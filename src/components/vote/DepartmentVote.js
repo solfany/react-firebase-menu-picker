@@ -1,6 +1,6 @@
 import React from 'react';
 import './DepartmentVote.scss';
-import DefaultButton from '../button/DefaultButton';
+import DefaultButton from '../button/DefaultBuutton/DefaultButton';
 import usersData from '../../data/users.json';
 
 const groupByDepartment = (users) => {
