@@ -1,0 +1,62 @@
+@use "../../../styles/abstracts/mixins" as *;
+@use "../../../styles/abstracts/variables" as var;
+.notification {
+  display: flex;
+  align-items: flex-start;
+  gap: 12px;
+  padding: 16px 20px;
+  border-radius: 12px;
+  font-size: 15px;
+  line-height: 1.5;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.05);
+  transition: all 0.3s ease-in-out;
+  font-weight: 500;
+  strong {
+    font-weight: 700;
+  }
+  .icon {
+    font-size: 20px;
+    margin-top: 2px;
+  }
+
+  .body {
+    flex: 1;
+  }
+}
+
+// 색상 테마별 스타일
+.info {
+  background-color: #e8f1fd;
+  color: #1a73e8;
+
+  .icon {
+    color: #1a73e8;
+  }
+}
+
+.warning {
+  background-color: #fff4e5;
+  color: #d97706;
+
+  .icon {
+    color: #d97706;
+  }
+}
+
+.success {
+  background-color: #e6f4ea;
+  color: #2e7d32;
+
+  .icon {
+    color: #2e7d32;
+  }
+}
+
+.error {
+  background-color: #fdecea;
+  color: #d32f2f;
+
+  .icon {
+    color: #d32f2f;
+  }
+}

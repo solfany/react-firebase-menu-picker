@@ -1,0 +1,113 @@
+import React, { useState } from 'react';
+import { FiMapPin, FiDollarSign, FiTag, FiThumbsUp } from 'react-icons/fi';
+import { useVoteData } from '../../../context/VoteProvider';
+import Title from '../../title/DefaultTitle/DefaultTitle';
+import Text from '../../text/DefaultText/DefaultText';
+import '../../../styles/components/select/_externalRestaurantSelect.scss';
+
+const ExternalRestaurantSelect = ({ user, restaurants, onComplete }) => {
+  const [selectedRestaurant, setSelectedRestaurant] = useState(null);
+  const [isVoteSubmitted, setIsVoteSubmitted] = useState(false);
+  
+  // In a real implementation, you would use this:
+  // const { addVote } = useVoteData();
+  
+  const handleVote = () => {
+    if (!selectedRestaurant) return;
+    
+    // In a real implementation, add to your vote context:
+    // addVote({
+    //   name: user,
+    //   choice: selectedRestaurant.name,
+    //   isExternal: true,
+    //   timestamp: new Date().toISOString()
+    // });
+    
+    setIsVoteSubmitted(true);
+    
+    // Reset after showing confirmation
+    setTimeout(() => {
+      onComplete();
+    }, 2000);
+  };
+  
+  return (
+    <div className="external-restaurant-select">
+      <Title variant="primary">
+        <FiMapPin size={20} style={{ marginRight: '8px' }} />
+        외식 장소 선택
+      </Title>
+      
+      {isVoteSubmitted ? (
+        <div className="external-restaurant-select__success">
+          <div className="external-restaurant-select__success-icon">✓</div>
+          <Text className="external-restaurant-select__success-message">
+            투표가 완료되었습니다!
+          </Text>
+          <Text className="external-restaurant-select__success-detail">
+            {selectedRestaurant.name}에 투표하셨습니다.
+          </Text>
+        </div>
+      ) : (
+        <>
+          <Text className="external-restaurant-select__instruction">
+            <strong>{user}</strong>님, 가고 싶은 외식 장소를 선택해주세요:
+          </Text>
+          
+          <div className="external-restaurant-select__list">
+            {restaurants.map(restaurant => (
+              <div 
+                key={restaurant.id}
+                className={`external-restaurant-select__item ${selectedRestaurant?.id === restaurant.id ? 'active' : ''}`}
+                onClick={() => setSelectedRestaurant(restaurant)}
+              >
+                <div className="external-restaurant-select__item-header">
+                  <h3 className="external-restaurant-select__item-name">{restaurant.name}</h3>
+                  <div className="external-restaurant-select__item-rating">
+                    <FiThumbsUp /> <span>{restaurant.rating}/5</span>
+                  </div>
+                </div>
+                
+                <div className="external-restaurant-select__item-details">
+                  <div className="external-restaurant-select__item-detail">
+                    <FiMapPin /> <span>{restaurant.location}</span>
+                  </div>
+                  <div className="external-restaurant-select__item-detail">
+                    <FiDollarSign /> <span>{restaurant.priceRange}</span>
+                  </div>
+                  <div className="external-restaurant-select__item-detail">
+                    <FiTag /> <span>{restaurant.cuisine}</span>
+                  </div>
+                </div>
+                
+                {restaurant.description && (
+                  <p className="external-restaurant-select__item-description">
+                    {restaurant.description}
+                  </p>
+                )}
+              </div>
+            ))}
+          </div>
+          
+          <div className="external-restaurant-select__actions">
+            <button 
+              className="external-restaurant-select__submit-btn"
+              disabled={!selectedRestaurant}
+              onClick={handleVote}
+            >
+              투표하기
+            </button>
+            <button 
+              className="external-restaurant-select__cancel-btn"
+              onClick={onComplete}
+            >
+              취소
+            </button>
+          </div>
+        </>
+      )}
+    </div>
+  );
+};
+
+export default ExternalRestaurantSelect;

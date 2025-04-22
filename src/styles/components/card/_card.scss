@@ -32,6 +32,7 @@
   width: auto;
   white-space: nowrap;
 }
+
 .restaurant-card {
   border-radius: var.$radius-lg;
   overflow: hidden;
@@ -68,9 +69,11 @@
     overflow-y: auto;
     background-color: #fbfdff60;
     border: var.$border-light;
+
     &::-webkit-scrollbar {
       width: 4px;
     }
+
     &::-webkit-scrollbar-thumb {
       background: var.$color-gray-300;
       border-radius: 4px;
@@ -142,8 +145,8 @@
 .not-voted-card {
   overflow: hidden;
   width: fit-content;
-  max-width: 100%;   
-  flex-shrink: 0;    
+  max-width: 100%;
+  flex-shrink: 0;
 
   &-header {
     border-radius: var.$radius-md;

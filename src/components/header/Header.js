@@ -2,6 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../../styles/components/header/_header.scss';
 import CustomLink from "../customLink/CustomLink";
+import { FiMapPin, FiSettings } from 'react-icons/fi';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -36,6 +37,22 @@ const Header = () => {
             className={`lunch-header__link ${location.pathname === '/stats' ? 'active' : ''}`}
           >
             통계 보기
+          </CustomLink>
+          
+          <CustomLink
+            to="/dining-out"
+            className={`lunch-header__link lunch-header__link--accent ${location.pathname === '/dining-out' ? 'active' : ''}`}
+          >
+            <FiMapPin className="lunch-header__icon" />
+            외식하기
+          </CustomLink>
+          
+          <CustomLink
+            to="/dining-admin"
+            className={`lunch-header__link lunch-header__link--admin ${location.pathname === '/dining-admin' ? 'active' : ''}`}
+          >
+            <FiSettings className="lunch-header__icon" />
+            외식 관리
           </CustomLink>
         </nav>
       </div>

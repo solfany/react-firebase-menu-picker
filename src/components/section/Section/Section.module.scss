@@ -1,21 +1,11 @@
-// src/styles/components/_section.scss
-@use '../abstracts/variables' as var;
-@use '../abstracts/mixins' as *;
+@use "../../../styles/abstracts/mixins" as *;
+@use "../../../styles/abstracts/variables" as var;
 
 .section {
-  padding: 20px;
-  margin: 20px;
   position: relative;
+  margin-bottom: 2rem;
 
   &.with-border {
     border-bottom: 1px solid #e5e7eb;
   }
-}
-
-// _flex-section.scss
-.flex-section {
-  display: flex;
-  flex-wrap: nowrap;
-  justify-content: space-between;
-  gap: var.$gap-md;
 }
