@@ -1,4 +1,5 @@
 import React, { useEffect, useState } from 'react';
+import { FiUser, FiArrowLeft } from 'react-icons/fi';
 import DefaultButton from '../../button/DefaultBuutton/DefaultButton';
 import GoBackButton from '../../button/GoBackButton/GoBackButton';
 import Card from '../../card/DefaultCard/DefaultCard';
@@ -14,7 +15,8 @@ const MenuSelect = ({ user, onComplete }) => {
   const today = new Date();
   const dayName = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'][today.getDay()];
   const todayKey = today.toISOString().slice(0, 10).replace(/-/g, '');
-  const { menus = [], categories = [] } = menusData[dayName] || {};
+  // Renamed the destructured variables to avoid conflicts
+  const { menus: dayMenus = [], categories: dayCategories = [] } = menusData[dayName] || {};
   const { setWatchTemp } = useVoteData();
   const { showToast } = useToast();
 
@@ -28,7 +30,7 @@ const MenuSelect = ({ user, onComplete }) => {
       if (snapshot.exists()) setVotedMenu(snapshot.val().menu);
     };
     fetchUserVote();
-  }, [user]);
+  }, [user, todayKey]);
 
   const handleSelect = async (menu) => {
     const userInfo = getUserInfo(user);
@@ -75,33 +77,28 @@ const MenuSelect = ({ user, onComplete }) => {
 
   return (
     <div className={styles['menu-select-container']}>
-      <div className={styles['header-content']}>
-        <GoBackButton onClick={onComplete}>뒤로가기</GoBackButton>
-      </div>
-
-      <Card>
-        <h4 className={styles['user-prompt']}>
+      <div className={styles['menu-select__content']}>
+        <h4 className={styles['menu-select__prompt']}>
           {user}님, 메뉴를 선택해주세요
         </h4>
 
-        {(categories.length > 0 ? categories : [{ items: menus }]).map(({ label, items }, catIdx) => (
+        {(dayCategories.length > 0 ? dayCategories : [{ items: dayMenus }]).map(({ label, items }, catIdx) => (
           <div key={label || catIdx} className={styles['menu-category']}>
             {label && <h5 className={styles['menu-category__title']}>{label}</h5>}
-            <div className={styles['menu-buttons']}>
+            <div className={styles['menu-items']}>
               {items.map((menu, idx) => (
-                <DefaultButton
+                <button
                   key={`${menu}-${idx}`}
                   onClick={() => handleSelect(menu)}
-                  isSelected={votedMenu === menu}
-                  className={styles['menu-button']}
+                  className={`${styles['menu-item']} ${votedMenu === menu ? styles['active'] : ''}`}
                 >
                   {menu}
-                </DefaultButton>
+                </button>
               ))}
             </div>
           </div>
         ))}
-      </Card>
+      </div>
     </div>
   );
 };

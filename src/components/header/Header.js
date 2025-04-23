@@ -2,7 +2,7 @@ import React, { useEffect, useState } from 'react';
 import { useLocation } from 'react-router-dom';
 import '../../styles/components/header/_header.scss';
 import CustomLink from "../customLink/CustomLink";
-import { FiMapPin, FiSettings } from 'react-icons/fi';
+import { FiMapPin, FiSettings, FiHome, FiBarChart2 } from 'react-icons/fi';
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -29,16 +29,18 @@ const Header = () => {
             to="/"
             className={`lunch-header__link ${location.pathname === '/' ? 'active' : ''}`}
           >
-            Menu Picker
+            <FiHome className="lunch-header__icon" />
+            홈
           </CustomLink>
 
           <CustomLink
             to="/stats"
             className={`lunch-header__link ${location.pathname === '/stats' ? 'active' : ''}`}
           >
+            <FiBarChart2 className="lunch-header__icon" />
             통계 보기
           </CustomLink>
-          
+
           <CustomLink
             to="/dining-out"
             className={`lunch-header__link lunch-header__link--accent ${location.pathname === '/dining-out' ? 'active' : ''}`}
@@ -46,7 +48,7 @@ const Header = () => {
             <FiMapPin className="lunch-header__icon" />
             외식하기
           </CustomLink>
-          
+
           <CustomLink
             to="/dining-admin"
             className={`lunch-header__link lunch-header__link--admin ${location.pathname === '/dining-admin' ? 'active' : ''}`}

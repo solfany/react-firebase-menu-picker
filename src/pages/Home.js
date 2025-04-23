@@ -10,11 +10,11 @@ import ExternalRestaurantSelect from '../components/select/ExternalRestaurantSel
 import Title from '../components/title/DefaultTitle/DefaultTitle';
 import Text from '../components/text/DefaultText/DefaultText';
 import VoteTimerNotification from '../components/timer/VoteTimerNotification/VoteTimerNotification'
+import DefaultNotification from '../components/notification/DefaultNotification/DefaultNotification'
 import menuData from '../data/menus.json';
 import { useVoteData } from '../context/VoteProvider';
 import users from '../data/users.json';
 import { FiMapPin, FiCalendar, FiUser, FiAlertCircle, FiCheckCircle, FiTag, FiDollarSign } from 'react-icons/fi';
-import { Section } from 'lucide';
 
 const Home = () => {
   const [selectedUser, setSelectedUser] = useState(null);
@@ -62,10 +62,7 @@ const Home = () => {
 
   return (
     <>
-    <VoteTimerNotification />
-      {/* <Section>
-        
-      </Section> */}
+      <VoteTimerNotification />
       <FlexSection>
         {/* Left Panel: User Selection or Menu/Restaurant Selection */}
         <Card className="layout-card">
@@ -75,6 +72,23 @@ const Home = () => {
                 diningMode={diningMode}
                 setDiningMode={setDiningMode}
               />
+                          {selectedUser ? (
+              <div className="dining-out__user-selection">
+                <FiUser size={16} />
+                <span>{selectedUser}</span>
+                <button
+                  className="dining-out__user-clear"
+                  onClick={() => setSelectedUser(null)}
+                >
+                  변경
+                </button>
+              </div>
+            ) : (
+              <div className="dining-out__user-prompt">
+                <FiUser size={16} />
+                <span>투표할 사원을 선택하세요</span>
+              </div>
+            )}
             </div>
           )}
 
@@ -86,7 +100,7 @@ const Home = () => {
           ) : (
             <>
               {diningMode === 'internal' ? (
-                <MenuSelect user={selectedUser} onComplete={() => setSelectedUser(null)} />
+            <MenuSelect user={selectedUser} onComplete={() => setSelectedUser(null)} />
               ) : (
                 <ExternalRestaurantSelect
                   user={selectedUser}

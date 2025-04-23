@@ -38,17 +38,17 @@ const VoteTimerNotification = () => {
 
   return (
     <>
-      <DefaultNotification type="info">
+      <DefaultNotification type="speaker">
         투표 가능 시간은 <strong>오전 8:00 ~ 오전 11:30</strong>입니다.
       </DefaultNotification>
       {isVoteTime ? (
         <DefaultNotification type="success">
-          ✅ 지금은 투표 가능 시간입니다. <br />
-          ⏰ <strong>{remaining}</strong> 남았습니다!
+          지금은 투표 가능 시간입니다. <br />
+          ⏰<strong>{remaining}</strong> 남았습니다!
         </DefaultNotification>
       ) : (
         <DefaultNotification type="warning">
-          ⛔ 현재는 투표 시간이 아닙니다.<br />
+          현재는 투표 시간이 아닙니다.<br />
           오전 8:00 이후에 다시 시도해주세요.
         </DefaultNotification>
       )}
