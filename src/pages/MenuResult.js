@@ -4,7 +4,7 @@ import BarChart from '../components/charts/BarChart/BarChart';
 import FlexSection from '../components/section/FlexSection/FlexSection';
 import DefaultCard from '../components/card/DefaultCard/DefaultCard';
 
-const MenuStats = () => {
+const MenuResult = () => {
     return (
         <>
             <FlexSection>
@@ -19,4 +19,4 @@ const MenuStats = () => {
     );
 };
 
-export default MenuStats;
+export default MenuResult;

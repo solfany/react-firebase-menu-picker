@@ -1,0 +1,29 @@
+.user-dining-selector {
+    &__toggle {
+      margin-bottom: 1rem;
+    }
+  
+    &__prompt,
+    &__selected-user {
+      display: flex;
+      align-items: center;
+      gap: 8px;
+      padding: 8px 14px;
+      border-radius: 6px;
+      background-color: #f2f7ff;
+      color: #117DFF;
+      font-weight: 500;
+      font-size: 1.1rem;
+    }
+  
+    &__selected-user button {
+      background: none;
+      border: none;
+      color: #117DFF;
+      cursor: pointer;
+      text-decoration: underline;
+      padding: 0;
+      margin-left: 8px;
+      font-size: 0.8rem;
+    }
+  }

@@ -1,4 +1,4 @@
-name: 매일 오후 5시 Firebase 전체 데이터 초기화
+name: 매일 오전 8시 Firebase 전체 데이터 초기화
 
 on:
   schedule:
@@ -14,7 +14,7 @@ jobs:
         with:
           node-version: "18"
 
-      - name: Firebase Admin SDK로 DB 삭제
+      - name: Firebase Admin SDK로 DB 삭제 및 외식모드 초기화
         run: |
           echo "$FIREBASE_SERVICE_ACCOUNT" > serviceAccountKey.json
 
@@ -30,15 +30,24 @@ jobs:
             databaseURL: process.env.FIREBASE_DATABASE_URL
           });
 
-          admin.database().ref().remove()
-            .then(() => {
-              console.log("Firebase 전체 데이터 초기화 완료");
+          const db = admin.database();
+
+          async function resetDatabase() {
+            try {
+              await db.ref().remove();
+              console.log("전체 데이터 삭제 완료");
+
+              await db.ref("settings/externalMode").set(false);
+              console.log("외식모드 초기화 완료");
+
               process.exit(0);
-            })
-            .catch((err) => {
-              console.error("삭제 실패", err);
+            } catch (err) {
+              console.error("초기화 실패", err);
               process.exit(1);
-            });
+            }
+          }
+
+          resetDatabase();
           EOF
         env:
           FIREBASE_SERVICE_ACCOUNT: ${{ secrets.FIREBASE_SERVICE_ACCOUNT }}

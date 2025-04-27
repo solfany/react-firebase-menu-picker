@@ -1,0 +1,79 @@
+@use "../../../styles/abstracts/mixins" as *;
+@use "../../../styles/abstracts/variables" as var;
+// components/home/InternalRestaurantCard.module.scss
+.card {
+  border-radius: 12px;
+  overflow: hidden;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
+  background-color: #fff;
+  padding: 20px;
+
+  .header {
+    border-bottom: 1px solid #eaeaea;
+    margin-bottom: 16px;
+  }
+
+  .content {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+  }
+
+  .dateInfo {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+    color: #888;
+    font-size: 0.875rem;
+  }
+
+  .title {
+    font-size: 1.2rem;
+    font-weight: 600;
+    color: #333;
+  }
+
+  .categories {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+  }
+
+  .category {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+  }
+
+  .categoryTitle {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 600;
+    font-size: 1rem;
+    color: #117DFF;
+  }
+
+  .count {
+    font-size: 0.75rem;
+    color: #888;
+  }
+
+  .menuList {
+    display: grid;
+    grid-template-columns: repeat(auto-fill, minmax(120px, 1fr));
+    gap: 8px;
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+
+  .menuItem {
+    background-color: #f5f7fa;
+    border-radius: 6px;
+    padding: 6px 10px;
+    font-size: 0.9rem;
+    color: #555;
+    position: relative;
+  }
+}

@@ -1,28 +1,33 @@
 [
-    { "name": "박영업", "department": "영업부서" },
-    { "name": "최영업", "department": "영업부서" },
-    { "name": "이영업", "department": "영업부서" },
-    { "name": "김영업", "department": "영업부서" },
-    { "name": "정영업", "department": "영업부서" },
+  { "name": "홍임원", "department": "임원" },
   
-    { "name": "한마케팅", "department": "마케팅부서" },
-    { "name": "서마케팅", "department": "마케팅부서" },
-    { "name": "오마케팅", "department": "마케팅부서" },
-    { "name": "이마케팅", "department": "마케팅부서" },
-    { "name": "조마케팅", "department": "마케팅부서" },
-  
-    { "name": "김개발", "department": "개발부서" },
-    { "name": "이개발", "department": "개발부서" },
-    { "name": "박개발", "department": "개발부서" },
-    { "name": "최개발", "department": "개발부서" },
-    { "name": "정개발", "department": "개발부서" },
-  
-    { "name": "윤관리", "department": "관리부서" },
-    { "name": "신관리", "department": "관리부서" },
-    { "name": "임관리", "department": "관리부서" },
-    { "name": "백관리", "department": "관리부서" },
-    { "name": "노관리", "department": "관리부서" },
-  
-    { "name": "홍임원", "department": "임원" }
-  ]
-  
+  { "name": "박영업", "department": "영업부서" },
+  { "name": "최영업", "department": "영업부서" },
+  { "name": "이영업", "department": "영업부서" },
+  { "name": "김영업", "department": "영업부서" },
+  { "name": "정영업", "department": "영업부서" },
+
+  { "name": "한마케팅", "department": "마케팅부서" },
+  { "name": "서마케팅", "department": "마케팅부서" },
+  { "name": "오마케팅", "department": "마케팅부서" },
+  { "name": "이마케팅", "department": "마케팅부서" },
+  { "name": "조마케팅", "department": "마케팅부서" },
+
+  { "name": "김개발", "department": "개발부서" },
+  { "name": "이개발", "department": "개발부서" },
+  { "name": "박개발", "department": "개발부서" },
+  { "name": "최개발", "department": "개발부서" },
+  { "name": "정개발", "department": "개발부서" },
+
+  { "name": "윤관리", "department": "관리부서" },
+  { "name": "신관리", "department": "관리부서" },
+  { "name": "임관리", "department": "관리부서" },
+  { "name": "백관리", "department": "관리부서" },
+  { "name": "노관리", "department": "관리부서" },
+
+  { "name": "강배차", "department": "배차부서" },
+  { "name": "최배차", "department": "배차부서" },
+  { "name": "이배차", "department": "배차부서" },
+  { "name": "정배차", "department": "배차부서" },
+  { "name": "박배차", "department": "배차부서" }
+]

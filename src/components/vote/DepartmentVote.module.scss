@@ -1,51 +1,55 @@
-@use "../../../src/styles/abstracts/mixins" as *;
-@use "../../../src/styles/abstracts/variables" as var;
+@use '../../styles/abstracts/variables' as var;
 
-// User selection panel styling
-.user-selection {
-  &-panel {
-    display: flex;
-    flex-direction: column;
-    gap: 24px;
+.panel {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.department {
+  background-color: white;
+  border-radius: var.$radius-md;
+  padding: 1rem;
+  box-shadow: var.$shadow-card;
+}
+
+.departmentTitle {
+  font-size: 1.1rem;
+  font-weight: 600;
+  margin-bottom: 1rem;
+  border-bottom: 1px solid var.$color-gray-200;
+  padding-bottom: 0.5rem;
+}
+
+.users {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
+  gap: 1rem;
+}
+
+.userButton {
+  padding: 10px 16px;
+  border-radius: var.$radius-md;
+  background-color: #f9fafb;
+  border: 1px solid #e5e7eb;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  font-size: 0.95rem;
+  cursor: pointer;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: var.$color-gray-100;
+    border-color: var.$color-primary;
+    color: var.$color-primary;
   }
-  
-  &-department {
-    &-title {
-      font-size: var.$font-size-header-sm;
-      font-weight: 600;
-      margin-bottom: 12px;
-      padding-bottom: 8px;
-      border-bottom: 1px solid var.$color-gray-200;
-    }
-  }
-  
-  &-users {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 8px;
-  }
-  
-  &-user-button {
-    padding: 8px 12px;
-    border-radius: var.$radius-md;
-    background-color: #f5f5f5;
-    border: 1px solid var.$color-gray-200;
-    display: flex;
-    align-items: center;
-    gap: 6px;
-    cursor: pointer;
-    transition: all 0.2s ease;
-    
-    &:hover {
-      background-color: #E6F0FF;
-      border-color: var.$color-primary;
-      color: var.$color-primary;
-    }
-    
-    &.active {
-      background-color: var.$color-primary;
-      color: var.$color-white;
-      border-color: var.$color-primary;
-    }
+
+  &.active,
+  &.#{'active'} {
+    background-color: var.$color-primary;
+    color: white;
+    font-weight: 600;
   }
 }

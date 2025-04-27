@@ -1,14 +1,15 @@
 import React, { useEffect, useState } from 'react';
+import { useVoteData } from '../../../context/VoteProvider'; // 🔥 추가
 import DefaultNotification from '../../notification/DefaultNotification/DefaultNotification';
-
-const VOTE_START_HOUR = 8;
-const VOTE_END_HOUR = 11;
-const VOTE_END_MINUTE = 30;
+import voteTimeConfig from '../../../data/voteTime.json';
 
 const VoteTimerNotification = () => {
+  const { externalMode } = useVoteData(); // 🔥 context에서 가져오기
   const [now, setNow] = useState(new Date());
   const [isVoteTime, setIsVoteTime] = useState(false);
   const [remaining, setRemaining] = useState('');
+
+  const { startHour, startMinute, endHour, endMinute } = voteTimeConfig;
 
   useEffect(() => {
     const interval = setInterval(() => {
@@ -16,9 +17,9 @@ const VoteTimerNotification = () => {
       setNow(current);
 
       const start = new Date();
-      start.setHours(VOTE_START_HOUR, 0, 0, 0);
+      start.setHours(startHour, startMinute, 0, 0);
       const end = new Date();
-      end.setHours(VOTE_END_HOUR, VOTE_END_MINUTE, 0, 0);
+      end.setHours(endHour, endMinute, 0, 0);
 
       if (current >= start && current <= end) {
         setIsVoteTime(true);
@@ -34,22 +35,35 @@ const VoteTimerNotification = () => {
     }, 1000);
 
     return () => clearInterval(interval);
-  }, []);
+  }, [startHour, startMinute, endHour, endMinute]);
+
+  const formatTime = (hour, minute) => {
+    const h = hour > 12 ? `오후 ${hour - 12}` : `오전 ${hour}`;
+    const m = minute.toString().padStart(2, '0');
+    return `${h}:${m}`;
+  };
 
   return (
     <>
       <DefaultNotification type="speaker">
-        투표 가능 시간은 <strong>오전 8:00 ~ 오전 11:30</strong>입니다.
+        투표 가능 시간은 <strong>{formatTime(startHour, startMinute)} ~ {formatTime(endHour, endMinute)}</strong>입니다.
       </DefaultNotification>
+
       {isVoteTime ? (
         <DefaultNotification type="success">
           지금은 투표 가능 시간입니다. <br />
           ⏰<strong>{remaining}</strong> 남았습니다!
         </DefaultNotification>
       ) : (
-        <DefaultNotification type="warning">
+        <DefaultNotification type="time">
           현재는 투표 시간이 아닙니다.<br />
-          오전 8:00 이후에 다시 시도해주세요.
+          {formatTime(startHour, startMinute)} 이후에 다시 시도해주세요.
+        </DefaultNotification>
+      )}
+
+      {externalMode && (
+        <DefaultNotification type="info">
+          오늘은 외식 예정입니다.
         </DefaultNotification>
       )}
     </>
