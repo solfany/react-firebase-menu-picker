@@ -13,7 +13,7 @@ const ExternalRestaurantSelect = ({ user, onComplete }) => {
   const { showToast } = useToast();
 
   const today = new Date();
-  const dayIndex = today.getDay()+1;
+  const dayIndex = today.getDay();
   const isWeekend = dayIndex === 0 || dayIndex === 6;
   const todayKey = today.toISOString().slice(0, 10).replace(/-/g, '');
   const todayCategories = externalMenuData.categories || [];

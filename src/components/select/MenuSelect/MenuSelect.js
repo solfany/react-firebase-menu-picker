@@ -9,7 +9,7 @@ import styles from './MenuSelect.module.scss';
 
 const MenuSelect = ({ user, onComplete }) => {
   const today = new Date();
-  const dayIndex = today.getDay()+1;
+  const dayIndex = today.getDay();
   const dayNameKor = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'][dayIndex];
   const todayKey = today.toISOString().slice(0, 10).replace(/-/g, '');
 

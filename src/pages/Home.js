@@ -23,7 +23,7 @@ const Home = () => {
 
   const today = new Date();
   const formattedDate = today.toLocaleDateString('ko-KR');
-  const dayIndex = today.getDay()+1;
+  const dayIndex = today.getDay();
   const dayName = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'][dayIndex];
   const dayData = menuData[dayName] || {};
 
