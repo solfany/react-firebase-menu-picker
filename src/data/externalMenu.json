@@ -1,8 +1,8 @@
 {
-    "categories": [
-      { "label": "한식" },
-      { "label": "중식" },
-      { "label": "일식" }
-    ]
-  }
-  
+  "categories": [
+    { "label": "한식" },
+    { "label": "중식" },
+    { "label": "일식" },
+    { "label": "양식" }
+  ]
+}

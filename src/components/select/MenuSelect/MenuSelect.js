@@ -1,29 +1,40 @@
-import React, { useEffect, useState } from 'react';
-import { ref, get, set } from 'firebase/database';
-import { database } from '../../../firebase/firebase';
-import users from '../../../data/users.json';
-import menusData from '../../../data/menus.json';
-import useToast from '../../../hooks/useToast';
-import { useVoteData } from '../../../context/VoteProvider';
-import styles from './MenuSelect.module.scss';
+import React, { useEffect, useState } from "react";
+import { ref, get, set } from "firebase/database";
+import { database } from "../../../firebase/firebase";
+import users from "../../../data/users.json";
+import menusData from "../../../data/menus.json";
+import useToast from "../../../hooks/useToast";
+import { useVoteData } from "../../../context/VoteProvider";
+import styles from "./MenuSelect.module.scss";
 
 const MenuSelect = ({ user, onComplete }) => {
   const today = new Date();
   const dayIndex = today.getDay();
-  const dayNameKor = ['일요일', '월요일', '화요일', '수요일', '목요일', '금요일', '토요일'][dayIndex];
-  const todayKey = today.toISOString().slice(0, 10).replace(/-/g, '');
+  const dayNameKor = [
+    "일요일",
+    "월요일",
+    "화요일",
+    "수요일",
+    "목요일",
+    "금요일",
+    "토요일",
+  ][dayIndex];
+  const todayKey = today.toISOString().slice(0, 10).replace(/-/g, "");
 
-  const { menus: dayMenus = [], categories: dayCategories = [] } = menusData[dayNameKor] || {};
+  const { menus: dayMenus = [], categories: dayCategories = [] } =
+    menusData[dayNameKor] || {};
   const { setWatchTemp } = useVoteData();
   const { showToast } = useToast();
 
   const [votedMenu, setVotedMenu] = useState(null);
 
-  const getUserInfo = (name) => users.find(u => u.name === name) || {};
+  const getUserInfo = (name) => users.find((u) => u.name === name) || {};
 
   useEffect(() => {
     const fetchUserVote = async () => {
-      const snapshot = await get(ref(database, `votes/${todayKey}/userVotes/${user}`));
+      const snapshot = await get(
+        ref(database, `votes/${todayKey}/userVotes/${user}`)
+      );
       if (snapshot.exists()) setVotedMenu(snapshot.val().menu);
     };
     fetchUserVote();
@@ -31,7 +42,8 @@ const MenuSelect = ({ user, onComplete }) => {
 
   const handleSelect = async (menu) => {
     const userInfo = getUserInfo(user);
-    if (!userInfo.name) return showToast('사용자 정보를 찾을 수 없습니다.', 3000);
+    if (!userInfo.name)
+      return showToast("사용자 정보를 찾을 수 없습니다.", 3000);
 
     const voteRef = ref(database, `votes/${todayKey}/userVotes/${user}`);
     const existing = await get(voteRef);
@@ -48,7 +60,10 @@ const MenuSelect = ({ user, onComplete }) => {
         await set(prevRef, Math.max(prevSnap.val() - 1, 0));
       }
 
-      showToast(`${user}님이 '${prevMenu}'에서 '${menu}'로 변경하셨습니다!`, 3000);
+      showToast(
+        `${user}님이 '${prevMenu}'에서 '${menu}'로 변경하셨습니다!`,
+        3000
+      );
     } else {
       showToast(`${user}님이 '${menu}'를 선택하셨습니다!`, 3000);
     }
@@ -61,7 +76,7 @@ const MenuSelect = ({ user, onComplete }) => {
       name: userInfo.name,
       department: userInfo.department,
       menu,
-      timestamp: Date.now()
+      timestamp: Date.now(),
     });
 
     setVotedMenu(menu);
@@ -74,28 +89,34 @@ const MenuSelect = ({ user, onComplete }) => {
   return (
     <div className={styles.panel}>
       <h3 className={styles.prompt}>
-        {user}님, {isWeekend ? '오늘은 주말입니다.' : '메뉴를 선택해주세요'}
+        {user}님, {isWeekend ? "오늘은 주말입니다." : "메뉴를 선택해주세요"}
       </h3>
 
       {isWeekend ? (
-        <p className={styles.weekendNotice}>주말에는 메뉴 투표를 진행하지 않습니다.</p>
+        <p className={styles.weekendNotice}>
+          주말에는 메뉴 투표를 진행하지 않습니다.
+        </p>
       ) : (
-        (dayCategories.length > 0 ? dayCategories : [{ items: dayMenus }]).map(({ label, items }, catIdx) => (
-          <div key={label || catIdx} className={styles.category}>
-            {label && <h4 className={styles.categoryTitle}>{label}</h4>}
-            <div className={styles.buttons}>
-              {items.map((menu, idx) => (
-                <button
-                  key={`${menu}-${idx}`}
-                  onClick={() => handleSelect(menu)}
-                  className={`${styles.button} ${votedMenu === menu ? styles.active : ''}`}
-                >
-                  {menu}
-                </button>
-              ))}
+        (dayCategories.length > 0 ? dayCategories : [{ items: dayMenus }]).map(
+          ({ label, items }, catIdx) => (
+            <div key={label || catIdx} className={styles.category}>
+              {label && <h4 className={styles.categoryTitle}>{label}</h4>}
+              <div className={styles.buttons}>
+                {items.map((menu, idx) => (
+                  <button
+                    key={`${menu}-${idx}`}
+                    onClick={() => handleSelect(menu)}
+                    className={`${styles.button} ${
+                      votedMenu === menu ? styles.active : ""
+                    }`}
+                  >
+                    {menu}
+                  </button>
+                ))}
+              </div>
             </div>
-          </div>
-        ))
+          )
+        )
       )}
     </div>
   );

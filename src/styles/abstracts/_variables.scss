@@ -4,15 +4,14 @@
 // abstracts/_variables.scss
 // Color Palette
 
-
 // =============================
 // Typography
 // =============================
-$font-default: 'Pretendard', sans-serif;
-$font-logo: 'Paperlogy-8ExtraBold', sans-serif;
+$font-default: "Pretendard", sans-serif;
+$font-logo: "Paperlogy-8ExtraBold", sans-serif;
 // $font-body: 'BMJUA', sans-serif;
 // $font-body: 'GmarketSansMedium', sans-serif;
-$font-body: 'Pretendard-Regular', sans-serif;
+$font-body: "Pretendard-Regular", sans-serif;
 
 // =============================
 // ⚪ Base Colors
@@ -23,52 +22,49 @@ $black: #000000;
 // =============================
 // ✨ Accent / Branding Colors
 // =============================
-$color-white:        #ffffff;
-$color-black:        #1e2b3c;
-$color-gray-100:     #f9fafb;
-$color-gray-200:     #f2f4f6;
-$color-gray-300:     #e5e8eb;
-$color-gray-400:     #d1d6db;
-$color-gray-500:     #8b95a1;
-$color-primary:      #3182f6;
-$color-danger:       #ff5a5a;
-
-
+$color-white: #ffffff;
+$color-black: #1e2b3c;
+$color-gray-100: #f9fafb;
+$color-gray-200: #f2f4f6;
+$color-gray-300: #e5e8eb;
+$color-gray-400: #d1d6db;
+$color-gray-500: #8b95a1;
+$color-primary: #3182f6;
+$color-purple: #805ad5;
+$color-danger: #ff5a5a;
 
 // =============================
 // 🌈 blur
 // =============================
 $default-blur-bg: rgba(255, 255, 255, 0.8);
 
-
 // =============================
 // 😇 shadow
 // =============================
-$shadow-card:        0 1px 4px rgba(0, 0, 0, 0.05);
+$shadow-card: 0 1px 4px rgba(0, 0, 0, 0.05);
 $shadow-default: 0 8px 20px rgba(0, 0, 0, 0.08);
 $shadow-scrolled: 0 2px 8px rgba(0, 0, 0, 0.05);
 
-
 // Radius (둥글기)
-$radius-sm:          4px;
-$radius-md:          8px;
-$radius-lg:          12px;
-$radius-xl:          16px;
-$radius-pill:        9999px;
+$radius-sm: 4px;
+$radius-md: 8px;
+$radius-lg: 12px;
+$radius-xl: 16px;
+$radius-pill: 9999px;
 
 // Spacing (여백)
-$padding-sm:         0.5rem;   // 8px
-$padding-md:         1rem;     // 16px
-$padding-lg:         1.5rem;   // 24px
-$margin-sm:          0.5rem;
-$margin-md:          1rem;
-$margin-lg:          1.5rem;
+$padding-sm: 0.5rem; // 8px
+$padding-md: 1rem; // 16px
+$padding-lg: 1.5rem; // 24px
+$margin-sm: 0.5rem;
+$margin-md: 1rem;
+$margin-lg: 1.5rem;
 
 // Gap (요소 간 간격)
-$gap-xs:             0.5rem;   // 8px
-$gap-sm:             1rem;     // 16px
-$gap-md:             1.5rem;   // 24px
-$gap-lg:             2rem;     // 32px
+$gap-xs: 0.5rem; // 8px
+$gap-sm: 1rem; // 16px
+$gap-md: 1.5rem; // 24px
+$gap-lg: 2rem; // 32px
 
 // =============================
 // ⚙ Common Font Sizes (추가)
@@ -101,13 +97,12 @@ $breakpoint-3xl: 1920px;
 $breakpoint-4xl: 2560px;
 $breakpoint-5xl: 3840px;
 
-
 // =============================
 // 사용하는 변수
 // =============================
-$text-color:         $color-black;
-$text-subtle:        $color-gray-500;
-$background-color:   $color-gray-100;
-$card-bg:            $color-white;
-$border-dark:         1px solid $color-gray-300;
-$border-light:  1px solid $color-gray-200;
+$text-color: $color-black;
+$text-subtle: $color-gray-500;
+$background-color: $color-gray-100;
+$card-bg: $color-white;
+$border-dark: 1px solid $color-gray-300;
+$border-light: 1px solid $color-gray-200;

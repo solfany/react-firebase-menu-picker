@@ -1,4 +1,4 @@
-@use '../../../styles/abstracts/variables' as var;
+@use "../../../styles/abstracts/variables" as var;
 
 .dining-modal-overlay {
   position: fixed;
@@ -29,6 +29,7 @@
     align-items: center;
     justify-content: space-between;
     padding: var.$padding-md;
+    padding-bottom: 0;
     border-bottom: 1px solid var.$color-gray-100;
   }
 
@@ -60,6 +61,7 @@
 
   &__content {
     padding: var.$padding-md;
+    padding-top: 0;
   }
 
   &__login,
@@ -72,7 +74,7 @@
 
   &__logo {
     margin-bottom: var.$margin-md;
-    
+
     &-icon {
       width: 56px;
       height: 56px;
@@ -82,7 +84,7 @@
       background-color: var.$color-primary;
       color: var.$white;
       border-radius: 50%;
-      
+
       svg {
         width: 28px;
         height: 28px;
@@ -157,8 +159,9 @@
 
   &__description {
     text-align: center;
-    font-size: var.$font-size-sm;
+    font-size: var.$font-size-nav-md;
     color: var.$text-subtle;
+    padding-bottom: 1rem;
   }
 
   &__toggle-container {
@@ -191,12 +194,41 @@
     &--enabled {
       color: var.$color-primary;
     }
+  }
 
-    &--disabled {
-      color: var.$text-subtle;
+  &--disabled {
+    color: var.$text-subtle;
+  }
+  &__clear-votes {
+    margin-top: 24px;
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  &__clear-button {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+    padding: 10px 16px;
+    font-size: 0.9rem;
+    background-color: #f5f5f5;
+    border: 1px solid #ccc;
+    color: #333;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: #ffecec;
+      border-color: #ff5c5c;
+      color: #d93025;
     }
   }
 
+  .dining-modal__clear-icon {
+    font-size: 1.1rem;
+  }
   &__toggle {
     position: relative;
     width: 46px;
@@ -219,7 +251,7 @@
       transition: background-color 0.4s;
 
       &::before {
-        content: '';
+        content: "";
         position: absolute;
         height: 18px;
         width: 18px;
@@ -240,7 +272,8 @@
     }
   }
 
-  &__submit-button, &__logout-button {
+  &__submit-button,
+  &__logout-button {
     width: 100%;
     height: 44px;
     border: none;
@@ -283,7 +316,7 @@
     font-weight: 600;
     font-size: 1.6rem;
     margin-bottom: var.$margin-sm;
-    
+
     &-icon {
       width: 20px;
       height: 20px;
@@ -293,13 +326,23 @@
 
 // 애니메이션
 @keyframes fadeIn {
-  from { opacity: 0; }
-  to { opacity: 1; }
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }
 
 @keyframes slideIn {
-  from { transform: translateY(-20px); opacity: 0; }
-  to { transform: translateY(0); opacity: 1; }
+  from {
+    transform: translateY(-20px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
 }
 
 // 반응형
@@ -307,8 +350,9 @@
   .dining-modal {
     border-radius: var.$radius-md;
     max-width: 100%;
-    
-    &__header, &__content {
+
+    &__header,
+    &__content {
       padding: var.$padding-sm;
     }
   }

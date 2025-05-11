@@ -1,6 +1,6 @@
-import React, { createContext, useContext, useEffect, useState } from 'react';
-import { ref, get, onValue, off } from 'firebase/database';
-import { database } from '../firebase/firebase';
+import React, { createContext, useContext, useEffect, useState } from "react";
+import { ref, get, onValue, off } from "firebase/database";
+import { database } from "../firebase/firebase";
 
 const VoteContext = createContext();
 
@@ -13,7 +13,7 @@ export const VoteProvider = ({ children }) => {
 
   const fetchVoteData = async () => {
     setLoading(true);
-    const todayKey = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    const todayKey = new Date().toISOString().slice(0, 10).replace(/-/g, "");
     const voteRef = ref(database, `votes/${todayKey}`);
 
     const snapshot = await get(voteRef);
@@ -30,11 +30,11 @@ export const VoteProvider = ({ children }) => {
     setLoading(false);
   };
 
-  // ✅ 투표 데이터 실시간 (잠깐만)
+  // 투표 데이터 실시간 (잠깐만)
   useEffect(() => {
     if (!watchTemp) return;
 
-    const todayKey = new Date().toISOString().slice(0, 10).replace(/-/g, '');
+    const todayKey = new Date().toISOString().slice(0, 10).replace(/-/g, "");
     const voteRef = ref(database, `votes/${todayKey}`);
 
     const unsubscribe = onValue(voteRef, (snapshot) => {
@@ -56,9 +56,9 @@ export const VoteProvider = ({ children }) => {
     };
   }, [watchTemp]);
 
-  // ✅ 외식 모드 실시간 감지
+  // 외식 모드 실시간 감지
   useEffect(() => {
-    const externalRef = ref(database, 'settings/externalMode');
+    const externalRef = ref(database, "settings/externalMode");
 
     const unsubscribe = onValue(externalRef, (snapshot) => {
       setExternalMode(!!snapshot.val());
@@ -74,13 +74,15 @@ export const VoteProvider = ({ children }) => {
   }, []);
 
   return (
-    <VoteContext.Provider value={{
-      userVotes,
-      summary,
-      externalMode, // 🔥
-      loading,
-      setWatchTemp
-    }}>
+    <VoteContext.Provider
+      value={{
+        userVotes,
+        summary,
+        externalMode,
+        loading,
+        setWatchTemp,
+      }}
+    >
       {children}
     </VoteContext.Provider>
   );

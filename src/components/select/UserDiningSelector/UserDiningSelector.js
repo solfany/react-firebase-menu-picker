@@ -1,10 +1,10 @@
-import React, { useEffect } from 'react';
-import { FiUser } from 'react-icons/fi';
-import DiningModeToggle from '../../toggle/DiningModeToggle/DiningModeToggle';
-import DepartmentVote from '../../vote/DepartmentVote';
-import MenuSelect from '../../select/MenuSelect/MenuSelect';
-import ExternalRestaurantSelect from '../ExternalRestaurantSelect/ExternalRestaurantSelect';
-import styles from './UserDiningSelector.module.scss';
+import React, { useEffect } from "react";
+import { FiUser } from "react-icons/fi";
+import DiningModeToggle from "../../toggle/DiningModeToggle/DiningModeToggle";
+import DepartmentVote from "../../vote/DepartmentVote";
+import MenuSelect from "../../select/MenuSelect/MenuSelect";
+import ExternalRestaurantSelect from "../ExternalRestaurantSelect/ExternalRestaurantSelect";
+import styles from "./UserDiningSelector.module.scss";
 
 const UserDiningSelector = ({
   selectedUser,
@@ -12,39 +12,38 @@ const UserDiningSelector = ({
   diningMode,
   setDiningMode,
   isExternalEnabled,
-  externalRestaurants
+  externalRestaurants,
 }) => {
-  
   // 🔥 외식 모드 꺼져있을 때 강제 사내식당 모드로
   useEffect(() => {
-    if (!isExternalEnabled && diningMode === 'external') {
-      setDiningMode('internal');
+    if (!isExternalEnabled && diningMode === "external") {
+      setDiningMode("internal");
     }
   }, [isExternalEnabled, diningMode, setDiningMode]);
 
   return (
     <>
-      <div className={styles['user-dining-selector__toggle']}>
+      <div className={styles["user-dining-selector__toggle"]}>
         <DiningModeToggle
           diningMode={diningMode}
           setDiningMode={setDiningMode}
           internalDisabled={false}
-          externalDisabled={!isExternalEnabled} // 🔥 외식 모드 꺼지면 외식 버튼 비활성화
+          externalDisabled={!isExternalEnabled}
         />
 
         {selectedUser ? (
-          <div className={styles['user-dining-selector__selected-user']}>
+          <div className={styles["user-dining-selector__selected-user"]}>
             <FiUser size={16} />
             <span>{selectedUser}</span>
             <button
-              className={styles['user-dining-selector__selected-user-button']}
+              className={styles["user-dining-selector__selected-user-button"]}
               onClick={() => setSelectedUser(null)}
             >
               변경
             </button>
           </div>
         ) : (
-          <div className={styles['user-dining-selector__prompt']}>
+          <div className={styles["user-dining-selector__prompt"]}>
             <FiUser size={16} />
             <span>투표할 사원을 선택하세요</span>
           </div>
@@ -56,8 +55,11 @@ const UserDiningSelector = ({
           selectedUser={selectedUser}
           onSelectUser={setSelectedUser}
         />
-      ) : diningMode === 'internal' ? (
-        <MenuSelect user={selectedUser} onComplete={() => setSelectedUser(null)} />
+      ) : diningMode === "internal" ? (
+        <MenuSelect
+          user={selectedUser}
+          onComplete={() => setSelectedUser(null)}
+        />
       ) : (
         <ExternalRestaurantSelect
           user={selectedUser}
