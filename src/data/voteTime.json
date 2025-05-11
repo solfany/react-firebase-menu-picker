@@ -1,7 +1,6 @@
 {
-    "startHour": 8,
-    "startMinute": 0,
-    "endHour": 11,
-    "endMinute": 30
-  }
-  
+  "startHour": 8,
+  "startMinute": 0,
+  "endHour": 11,
+  "endMinute": 30
+}

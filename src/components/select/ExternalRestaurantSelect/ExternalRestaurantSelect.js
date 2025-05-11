@@ -90,8 +90,7 @@ const ExternalRestaurantSelect = ({ user, onComplete }) => {
   return (
     <div className={styles.panel}>
       <h3 className={styles.prompt}>
-        {user}님,{" "}
-        {isWeekend ? "오늘은 주말입니다." : "요리 카테고리를 선택해주세요"}
+        {user}님, {isWeekend ? "오늘은 주말입니다." : "카테고리를 선택해주세요"}
       </h3>
 
       {isWeekend ? (

@@ -67,9 +67,7 @@ const DiningAdminModal = ({ isOpen, onClose }) => {
     >
       <div className="dining-modal">
         <div className="dining-modal__header">
-          <Title variant="secondary" className="dining-modal__title">
-            설정
-          </Title>
+          <p className="dining-modal__title">설정</p>
           <button className="dining-modal__close-btn" onClick={onClose}>
             <FiX />
           </button>

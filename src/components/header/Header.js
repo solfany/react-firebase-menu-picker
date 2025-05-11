@@ -3,7 +3,14 @@ import { useLocation } from "react-router-dom";
 import "../../styles/components/header/_header.scss";
 import CustomLink from "../customLink/CustomLink";
 import DiningAdminModal from "../modal/DiningAdminModal/DiningAdminModal.js";
-import { FiMapPin, FiSettings, FiHome, FiBarChart2 } from "react-icons/fi";
+import {
+  FiMapPin,
+  FiSettings,
+  FiHome,
+  FiBarChart2,
+  FiAlertTriangle,
+} from "react-icons/fi";
+import ErrorReportModal from "../modal/ErrorReportModal/ErrorReportModal.js";
 
 const Header = () => {
   const [isScrolled, setIsScrolled] = useState(false);
@@ -25,6 +32,16 @@ const Header = () => {
 
   const closeModal = () => {
     setIsModalOpen(false);
+  };
+
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
+  const openErrorModal = (e) => {
+    e.preventDefault();
+    setIsErrorModalOpen(true);
+  };
+
+  const closeErrorModal = () => {
+    setIsErrorModalOpen(false);
   };
 
   return (
@@ -67,6 +84,17 @@ const Header = () => {
             설정
           </button>
           <DiningAdminModal isOpen={isModalOpen} onClose={closeModal} />
+          <button
+            onClick={openErrorModal}
+            className="lunch-header__link lunch-header__link--error"
+          >
+            <FiAlertTriangle className="lunch-header__icon" />
+            오류 신고하기
+          </button>
+          <ErrorReportModal
+            isOpen={isErrorModalOpen}
+            onClose={closeErrorModal}
+          />
         </nav>
       </div>
       <div className="lunch-header__backdrop" />
