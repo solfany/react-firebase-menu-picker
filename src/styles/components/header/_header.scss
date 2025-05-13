@@ -50,6 +50,11 @@
       color: var.$text-subtle;
       font-weight: 500;
     }
+    &-text-primary {
+      font-size: var.$font-size-header-md;
+      color: var.$color-primary;
+      font-weight: 600;
+    }
 
     &-highlight {
       font-size: var.$font-size-header-md;
