@@ -21,3 +21,9 @@
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+
+# ➕ custom ignore
+
+# ignore local data and firebase config
+/src/data/
+/src/firebase/firebase.js
