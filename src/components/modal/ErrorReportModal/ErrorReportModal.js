@@ -27,14 +27,14 @@ const ErrorReportModal = ({ isOpen, onClose }) => {
 
     try {
       await send(
-        "service_solfany", // EmailJS 서비스 ID
-        "template_gwxjjr9", // 템플릿 ID
+        "service_---", // EmailJS 서비스 ID
+        "template_---", // 템플릿 ID
         {
           from_name: from_name || "익명 사용자",
           from_email: from_email || "default@example.com",
-          my_name: "솔비", // 고정
+          my_name: "--", // 고정
           message: message || "(내용 없음)",
-          to_email: "solfany1999@gmail.com", // 고정
+          to_email: "--", // 고정
         },
         "VvQSChtbcKA2xvnoK" // Public Key
       );
