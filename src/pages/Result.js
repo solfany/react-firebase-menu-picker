@@ -43,10 +43,10 @@ const Result = () => {
   const topMenuEntry = validMenus.sort((a, b) => b[1] - a[1])[0];
   const topMenu = topMenuEntry
     ? {
-        name: topMenuEntry[0],
-        count: topMenuEntry[1],
-        type: externalMenuSet.has(topMenuEntry[0]) ? "외식" : "사내",
-      }
+      name: topMenuEntry[0],
+      count: topMenuEntry[1],
+      type: externalMenuSet.has(topMenuEntry[0]) ? "외식" : "사내",
+    }
     : { name: "-", count: 0, type: "-" };
 
   // ✅ 메뉴별 메모 취합 (부서, 이름 포함)
@@ -86,14 +86,13 @@ const Result = () => {
                   </tr>
                 </thead>
                 <tbody>
-                  {userVotes.map(({ department, name, selections }) =>
-                    Array.isArray(selections) ? (
+                  {userVotes
+                    .filter(({ selections }) => Array.isArray(selections) && selections.length > 0)
+                    .flatMap(({ department, name, selections }) =>
                       selections.map(({ menu, memo }, idx) => {
                         const isExternal = externalMenuSet.has(menu);
                         const type = isExternal ? "외식" : "사내";
-                        const tagClass = `${styles.menuTag} ${
-                          isExternal ? styles.external : styles.internal
-                        }`;
+                        const tagClass = `${styles.menuTag} ${isExternal ? styles.external : styles.internal}`;
 
                         return (
                           <tr key={`${department}-${name}-${idx}`}>
@@ -109,14 +108,7 @@ const Result = () => {
                           </tr>
                         );
                       })
-                    ) : (
-                      <tr key={`${department}-${name}-empty`}>
-                        <td>{department}</td>
-                        <td>{name}</td>
-                        <td colSpan={3}>메뉴 선택 기록이 없습니다.</td>
-                      </tr>
-                    )
-                  )}
+                    )}
                 </tbody>
               </table>
             </div>
