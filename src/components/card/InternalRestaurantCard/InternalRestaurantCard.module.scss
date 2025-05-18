@@ -1,13 +1,18 @@
 @use "../../../styles/abstracts/mixins" as *;
 @use "../../../styles/abstracts/variables" as var;
-// components/home/InternalRestaurantCard.module.scss
+
 .card {
-  border-radius: 12px;
-  overflow: hidden;
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-  background-color: #fff;
-  padding: 20px;
+  width: 100%;
+  border-radius: var.$radius-lg;
+  padding: var.$padding-lg;
+  background-color: var.$card-bg;
+  border: var.$border-dark;
+  white-space: nowrap;
+  box-shadow: var.$shadow-default;
+  box-sizing: border-box;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
 
   .header {
     border-bottom: 1px solid #eaeaea;
@@ -51,7 +56,7 @@
     justify-content: space-between;
     font-weight: 600;
     font-size: 1rem;
-    color: #117DFF;
+    color: #117dff;
   }
 
   .count {
@@ -75,5 +80,21 @@
     font-size: 0.9rem;
     color: #555;
     position: relative;
+  }
+
+  // 📱 반응형 대응
+  @media (max-width: 768px) {
+    padding: var.$padding-md;
+    white-space: normal;
+    width: 100%;
+  }
+
+  @media (max-width: 480px) {
+    padding: var.$padding-sm;
+    white-space: normal;
+    width: 100%;
+    border: none;
+    box-shadow: none;
+    background-color: transparent;
   }
 }

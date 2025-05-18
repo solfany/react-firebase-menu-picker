@@ -232,3 +232,43 @@
     align-self: flex-start;
   }
 }
+.memoList {
+  margin-top: 0.5rem;
+  padding-left: 1rem;
+  ul {
+    list-style: none;
+    padding: 0;
+    margin: 0;
+  }
+}
+
+.memoList li {
+  margin-bottom: 6px;
+  font-size: 0.9rem;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.memoName {
+  background-color: #1e3a8a;
+  color: white;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.memoDept {
+  background-color: #f1f5f9;
+  color: #475569;
+  border: 1px solid #cbd5e1;
+  padding: 2px 6px;
+  border-radius: 4px;
+  font-size: 0.8rem;
+}
+
+.memoRequest {
+  color: #334155;
+  font-size: 0.9rem;
+}

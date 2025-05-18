@@ -1,5 +1,5 @@
-@use '../abstracts/variables' as var;
-@use '../abstracts/mixins' as *;
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as *;
 
 /* ===============================
    기본 HTML 요소 스타일
@@ -62,4 +62,11 @@ img {
   width: 100%;
   height: 100%;
   object-fit: fill;
+}
+
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+  position: fixed;
+  width: 100%;
 }

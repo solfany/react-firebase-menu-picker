@@ -3,45 +3,39 @@ import { useLocation } from "react-router-dom";
 import "../../styles/components/header/_header.scss";
 import CustomLink from "../customLink/CustomLink";
 import DiningAdminModal from "../modal/DiningAdminModal/DiningAdminModal.js";
+import ErrorReportModal from "../modal/ErrorReportModal/ErrorReportModal.js";
+// import eggBaconIcon from "../../assets/images/egg_bacon.png";
+import foodfriedeggIcon from "../../assets/images/foodfriedegg.png";
 import {
-  FiMapPin,
   FiSettings,
   FiHome,
   FiBarChart2,
   FiAlertTriangle,
 } from "react-icons/fi";
-import ErrorReportModal from "../modal/ErrorReportModal/ErrorReportModal.js";
 
-const Header = () => {
+const Header = ({ menuOpen, setMenuOpen }) => {
   const [isScrolled, setIsScrolled] = useState(false);
   const location = useLocation();
   const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
 
   useEffect(() => {
-    const handleScroll = () => {
-      setIsScrolled(window.scrollY > 20);
-    };
+    const handleScroll = () => setIsScrolled(window.scrollY > 20);
     window.addEventListener("scroll", handleScroll);
     return () => window.removeEventListener("scroll", handleScroll);
   }, []);
+
+  const toggleMenu = () => setMenuOpen((prev) => !prev);
+  const closeMenu = () => setMenuOpen(false);
 
   const openModal = (e) => {
     e.preventDefault();
     setIsModalOpen(true);
   };
 
-  const closeModal = () => {
-    setIsModalOpen(false);
-  };
-
-  const [isErrorModalOpen, setIsErrorModalOpen] = useState(false);
   const openErrorModal = (e) => {
     e.preventDefault();
     setIsErrorModalOpen(true);
-  };
-
-  const closeErrorModal = () => {
-    setIsErrorModalOpen(false);
   };
 
   return (
@@ -49,55 +43,82 @@ const Header = () => {
       className={`lunch-header ${isScrolled ? "lunch-header--scrolled" : ""}`}
     >
       <div className="lunch-header__container">
-        <h1 className="lunch-header__title">
-          <span className="lunch-header__title-text"><span className="lunch-header__title-text-primary">NP</span>icker</span>
-          <span className="lunch-header__title-highlight">점심메뉴 서비스</span>
-        </h1>
+        <CustomLink to="/" onClick={closeMenu}>
+          <span className="lunch-header__title-text">
+            <span className="lunch-header__title-text-primary">NP</span>
+            icker &nbsp;
+            <span className="lunch-header__title-text-primary">
+              점심메뉴 투표
+            </span>
+            {/* <img
+            src={foodfriedeggIcon}
+            alt="로고"
+            className="lunch-header__icon-img"
+          /> */}
+          </span>
+        </CustomLink>
+        <button
+          className={`lunch-header__menu-toggle ${menuOpen ? "active" : ""}`}
+          onClick={toggleMenu}
+          aria-label="Toggle menu"
+        >
+          <span className="hamburger-bar"></span>
+          <span className="hamburger-bar"></span>
+          <span className="hamburger-bar"></span>
+        </button>
 
-        <nav className="lunch-header__nav">
-          <CustomLink
-            to="/"
-            className={`lunch-header__link ${
-              location.pathname === "/" ? "active" : ""
-            }`}
-          >
-            <FiHome className="lunch-header__icon" />홈
-          </CustomLink>
+        <nav className={`lunch-header__nav ${menuOpen ? "open" : ""}`}>
           <CustomLink
             to="/result"
             className={`lunch-header__link ${
               location.pathname === "/result" ? "active" : ""
             }`}
+            onClick={closeMenu}
           >
             <FiBarChart2 className="lunch-header__icon" />
             통계 보기
           </CustomLink>
-
-          {/* CustomLink 대신 일반 버튼으로 변경 */}
           <button
-            onClick={openModal}
-            className={`lunch-header__link lunch-header__link--admin ${
-              isModalOpen ? "active" : ""
-            }`}
+            onClick={(e) => {
+              openModal(e);
+              closeMenu();
+            }}
+            className="lunch-header__link lunch-header__link--admin"
           >
             <FiSettings className="lunch-header__icon" />
             설정
           </button>
-          <DiningAdminModal isOpen={isModalOpen} onClose={closeModal} />
           <button
-            onClick={openErrorModal}
+            onClick={(e) => {
+              openErrorModal(e);
+              closeMenu();
+            }}
             className="lunch-header__link lunch-header__link--error"
           >
             <FiAlertTriangle className="lunch-header__icon" />
             오류 신고하기
           </button>
-          <ErrorReportModal
-            isOpen={isErrorModalOpen}
-            onClose={closeErrorModal}
-          />
+          <CustomLink
+            to="/update-version-doc"
+            className={`lunch-header__link ${
+              location.pathname === "/update-version-doc" ? "active" : ""
+            }`}
+            onClick={closeMenu}
+          >
+            <FiBarChart2 className="lunch-header__icon" />
+            업데이트 내역
+          </CustomLink>
         </nav>
+
+        <DiningAdminModal
+          isOpen={isModalOpen}
+          onClose={() => setIsModalOpen(false)}
+        />
+        <ErrorReportModal
+          isOpen={isErrorModalOpen}
+          onClose={() => setIsErrorModalOpen(false)}
+        />
       </div>
-      <div className="lunch-header__backdrop" />
     </header>
   );
 };

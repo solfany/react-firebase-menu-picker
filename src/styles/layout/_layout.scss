@@ -1,5 +1,5 @@
-@use '../abstracts/variables' as var;
-@use '../abstracts/mixins' as *;
+@use "../abstracts/variables" as var;
+@use "../abstracts/mixins" as *;
 
 .app-container {
   display: flex;
@@ -10,4 +10,25 @@
 
 .container {
   @include container;
+}
+/* ✅ 글로벌 오버레이 정의 (전체 흐림용 배경) */
+.global-menu-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 900;
+  background: rgba(0, 0, 0, 0.5);
+  backdrop-filter: blur(4px);
+  animation: fadeIn 0.3s ease;
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
 }

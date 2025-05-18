@@ -1,4 +1,4 @@
-@use '../../styles/abstracts/variables' as var;
+@use "../../styles/abstracts/variables" as var;
 
 .panel {
   display: flex;
@@ -11,6 +11,20 @@
   border-radius: var.$radius-md;
   padding: 1rem;
   box-shadow: var.$shadow-card;
+
+  // 반응형 - 모바일에서 padding, shadow 제거
+  @media (max-width: var.$breakpoint-md) {
+    padding: 0;
+    box-shadow: none;
+  }
+}
+
+// 클래스명으로 직접 제어
+.DepartmentVote_department__Ul6fc {
+  @media (max-width: var.$breakpoint-md) {
+    padding: 0 !important;
+    box-shadow: none !important;
+  }
 }
 
 .departmentTitle {
@@ -25,9 +39,15 @@
   display: grid;
   grid-template-columns: repeat(auto-fill, minmax(130px, 1fr));
   gap: 1rem;
+
+  // 모바일에서 2열로 제한
+  @media (max-width: var.$breakpoint-sm) {
+    grid-template-columns: repeat(2, 1fr);
+  }
 }
 
 .userButton {
+  // color: var.$color-black;
   padding: 10px 16px;
   border-radius: var.$radius-md;
   background-color: #f9fafb;
@@ -47,7 +67,7 @@
   }
 
   &.active,
-  &.#{'active'} {
+  &.#{"active"} {
     background-color: var.$color-primary;
     color: white;
     font-weight: 600;

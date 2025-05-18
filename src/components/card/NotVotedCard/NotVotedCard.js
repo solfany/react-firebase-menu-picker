@@ -1,7 +1,7 @@
-import React from 'react';
-import { FiUser, FiAlertCircle, FiCheckCircle } from 'react-icons/fi';
-import Text from '../../text/DefaultText/DefaultText';
-import styles from './NotVotedCard.module.scss';
+import React from "react";
+import { FiUser, FiAlertCircle, FiCheckCircle } from "react-icons/fi";
+import Text from "../../text/DefaultText/DefaultText";
+import styles from "./NotVotedCard.module.scss";
 
 const NotVotedCard = ({ notVotedUsers }) => {
   const isEmpty = notVotedUsers.length === 0;

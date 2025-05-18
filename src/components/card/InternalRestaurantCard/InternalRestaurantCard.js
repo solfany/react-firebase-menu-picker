@@ -1,15 +1,15 @@
-import React from 'react';
-import { FiMapPin, FiCalendar } from 'react-icons/fi';
-import Title from '../../title/DefaultTitle/DefaultTitle';
-import Text from '../../text/DefaultText/DefaultText';
-import styles from './InternalRestaurantCard.module.scss';
+import React from "react";
+import { FiMapPin, FiCalendar } from "react-icons/fi";
+import Title from "../../title/DefaultTitle/DefaultTitle";
+import Text from "../../text/DefaultText/DefaultText";
+import styles from "./InternalRestaurantCard.module.scss";
 
 const InternalRestaurantCard = ({
   restaurant,
   dayName,
   formattedDate,
   todayMenus = [],
-  todayCategories = []
+  todayCategories = [],
 }) => {
   return (
     <div className={styles.card}>
@@ -21,7 +21,9 @@ const InternalRestaurantCard = ({
       <div className={styles.content}>
         <div className={styles.dateInfo}>
           <FiCalendar size={16} />
-          <Text>{formattedDate} ({dayName})</Text>
+          <Text>
+            {formattedDate} ({dayName})
+          </Text>
         </div>
         <h3 className={styles.title}>메뉴판 미리보기</h3>
         {todayCategories?.length > 0 ? (
@@ -30,11 +32,15 @@ const InternalRestaurantCard = ({
               <div key={idx} className={styles.category}>
                 <h4 className={styles.categoryTitle}>
                   {category.label}
-                  <span className={styles.count}>{category.items.length}개</span>
+                  <span className={styles.count}>
+                    {category.items.length}개
+                  </span>
                 </h4>
                 <ul className={styles.menuList}>
                   {category.items.map((item, i) => (
-                    <li key={i} className={styles.menuItem}>{item}</li>
+                    <li key={i} className={styles.menuItem}>
+                      {item}
+                    </li>
                   ))}
                 </ul>
               </div>
@@ -43,7 +49,9 @@ const InternalRestaurantCard = ({
         ) : (
           <ul className={styles.menuList}>
             {todayMenus.map((item, i) => (
-              <li key={i} className={styles.menuItem}>{item}</li>
+              <li key={i} className={styles.menuItem}>
+                {item}
+              </li>
             ))}
           </ul>
         )}

@@ -1,6 +1,5 @@
 import React, { useEffect, useRef, useState } from "react";
 import "../../styles/components/_diningAdminModal.scss";
-import Title from "../../../components/title/DefaultTitle/DefaultTitle";
 import Text from "../../../components/text/DefaultText/DefaultText";
 import { database } from "../../../firebase/firebase";
 import { ref, set, onValue } from "firebase/database";
