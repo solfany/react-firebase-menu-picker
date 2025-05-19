@@ -19,8 +19,8 @@
 | `voteTime.json`     | 투표 가능 시간 설정 (`start`, `end`)   |
 
 > 각 파일의 데이터 구조 및 예시는 [로컬 개발용 JSON 및 설정 파일 가이드](https://github.com/solfany/react-firebase-menu-picker/wiki/로컬-개발용-JSON-및-설정-파일-가이드)를 참고해 주세요.  
+---   
 
----
 
 #### 2. `src/firebase/firebase.js`
 
