@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useVoteData } from "../context/VoteProvider";
-import { useNavigate } from "react-router-dom";
 
 import FlexSection from "../components/section/FlexSection/FlexSection";
 import Card from "../components/card/DefaultCard/DefaultCard";
