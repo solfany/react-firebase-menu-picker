@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { useVoteData } from "../context/VoteProvider";
-import { useNavigate } from "react-router-dom";
 
 import FlexSection from "../components/section/FlexSection/FlexSection";
 import Card from "../components/card/DefaultCard/DefaultCard";
@@ -36,7 +35,11 @@ const Home = () => {
   const dayData = menuData[dayName] || {};
 
   const { userVotes } = useVoteData();
-  const votedNames = userVotes.map((vote) => vote.name);
+
+  const votedNames = userVotes
+    .filter((v) => Array.isArray(v.selections) && v.selections.length > 0)
+    .map((v) => v.name);
+
   const notVotedUsers = users.filter((user) => !votedNames.includes(user.name));
 
   return (
@@ -75,6 +78,7 @@ const Home = () => {
           )}
           <MenuResult />
         </Card>
+
         {/* 우측: 미투표 인원 */}
         <NotVotedCard notVotedUsers={notVotedUsers} />
       </FlexSection>

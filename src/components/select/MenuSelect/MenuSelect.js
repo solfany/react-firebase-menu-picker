@@ -23,8 +23,8 @@ const MenuSelect = ({ user }) => {
 
   const { menus: dayMenus = [], categories: dayCategories = [] } =
     menusData[dayNameKor] || {};
-  const { setWatchTemp } = useVoteData();
   const { showToast } = useToast();
+  const { startWatching, stopWatching } = useVoteData();
 
   const [selections, setSelections] = useState([]);
   const [editingMemoIndex, setEditingMemoIndex] = useState(null);
@@ -47,6 +47,11 @@ const MenuSelect = ({ user }) => {
     fetchUserVotes();
   }, [user, todayKey]);
 
+  const startShortPolling = () => {
+    startWatching();
+    setTimeout(() => stopWatching(), 5000);
+  };
+
   const handleSelect = async (menu) => {
     const userInfo = getUserInfo(user);
     if (!userInfo.name)
@@ -67,7 +72,7 @@ const MenuSelect = ({ user }) => {
       timestamp: Date.now(),
     });
 
-    setWatchTemp(true);
+    startShortPolling();
   };
 
   const handleCancel = async (index) => {
@@ -104,7 +109,8 @@ const MenuSelect = ({ user }) => {
       `${user}님이 '${target.menu}'에 대한 투표를 취소하셨습니다!`,
       3000
     );
-    setWatchTemp(true);
+
+    startShortPolling();
   };
 
   const handleMemoClick = (index) => {
@@ -134,6 +140,8 @@ const MenuSelect = ({ user }) => {
     setEditingMemoIndex(null);
     setTempMemo("");
     showToast("메모가 저장되었습니다!", 2000);
+
+    startShortPolling();
   };
 
   const getVoteCount = (menu) =>
@@ -147,10 +155,9 @@ const MenuSelect = ({ user }) => {
         {user}님, {isWeekend ? "오늘은 주말입니다." : "메뉴를 선택해주세요"}
       </h3>
 
-      {/* 나의 투표 목록: 항상 표시 */}
+      {/* 나의 투표 목록 */}
       <div className={styles.votedMenusContainer}>
         <p className={styles.votedMenusLabel}>나의 투표 목록</p>
-
         <p className={styles.votedMenusDescription}>
           동일한 메뉴를 여러 번 선택하고, 각 항목마다 메모를 남길 수 있습니다.
           <br />

@@ -11,7 +11,7 @@ const VoteTimerNotification = () => {
   const { startHour, startMinute, endHour, endMinute } = voteTimeConfig;
 
   useEffect(() => {
-    const interval = setInterval(() => {
+    const checkVoteTime = () => {
       const now = new Date();
 
       const start = new Date();
@@ -36,8 +36,11 @@ const VoteTimerNotification = () => {
       } else {
         setRemaining("");
       }
-    }, 1000);
+    };
 
+    checkVoteTime();
+
+    const interval = setInterval(checkVoteTime, 1000);
     return () => clearInterval(interval);
   }, [startHour, startMinute, endHour, endMinute]);
 

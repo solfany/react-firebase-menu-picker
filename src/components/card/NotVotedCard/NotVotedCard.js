@@ -24,7 +24,7 @@ const NotVotedCard = ({ notVotedUsers }) => {
         ) : (
           <ul className={styles.list}>
             {notVotedUsers.map(({ name, department }) => (
-              <li key={name} className={styles.listItem}>
+              <li key={`${department}-${name}`} className={styles.listItem}>
                 <FiUser size={14} />
                 <span className={styles.department}>{department}</span>
                 <span className={styles.name}>{name}</span>

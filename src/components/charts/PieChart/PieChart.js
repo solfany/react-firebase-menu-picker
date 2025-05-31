@@ -1,7 +1,7 @@
 import React from "react";
 import { Pie } from "react-chartjs-2";
 import { Chart as ChartJS, ArcElement, Tooltip, Legend } from "chart.js";
-import styles from "./PieChart.module.scss"; // ✅ CSS Module import
+import styles from "./PieChart.module.scss";
 import { useVoteData } from "../../../context/VoteProvider";
 import LoadingSpinner from "../../loading/LoadingSpinner/LoadingSpinner";
 

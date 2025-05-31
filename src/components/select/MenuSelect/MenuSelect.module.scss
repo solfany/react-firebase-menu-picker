@@ -93,8 +93,20 @@
 
 .votedMenuItem {
   display: flex;
+  flex-direction: row;
   align-items: center;
+  flex-wrap: wrap;
   width: 100%;
+  gap: 0.5rem;
+  margin-bottom: 0.8rem;
+
+  @media (max-width: 480px) {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.3rem;
+    border-bottom: 1px dashed var.$color-gray-300;
+    padding-bottom: 0.8rem;
+  }
 }
 
 .votedMenuTag {
@@ -106,24 +118,75 @@
   border-radius: var.$radius-sm;
   display: inline-flex;
   align-items: center;
-  position: relative;
+  white-space: nowrap;
 }
 
-.tagVoteCount {
-  background-color: white;
-  color: var.$color-primary;
-  width: 1.2rem;
-  height: 1.2rem;
-  border-radius: 50%;
+.memoInputGroup {
   display: flex;
+  flex-direction: row;
   align-items: center;
-  justify-content: center;
-  font-size: 0.7rem;
-  font-weight: 600;
-  margin-left: 0.4rem;
+  flex-wrap: wrap;
+  gap: 0.3rem;
+
+  @media (max-width: 480px) {
+    width: 100%;
+  }
 }
 
-// 취소 버튼 스타일
+.memoInput {
+  width: 180px;
+  max-width: 100%;
+  padding: 0.35rem 0.6rem;
+  font-size: 0.85rem;
+  border: 1px solid var.$color-gray-300;
+  border-radius: 4px;
+  background-color: white;
+  color: var.$text-color;
+}
+
+.memoButton {
+  background-color: rgba(26, 115, 232, 0.08);
+  color: var.$color-primary;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  padding: 0.35rem 0.6rem;
+  transition: all 0.2s ease;
+
+  &:hover {
+    background-color: rgba(26, 115, 232, 0.15);
+  }
+}
+
+.confirmButton {
+  background-color: var.$color-success;
+  color: white;
+  border: none;
+  padding: 0.35rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+
+  &:hover {
+    background-color: var.$color-success-dark;
+  }
+}
+
+.cancelEditButton {
+  background-color: #e0e0e0;
+  color: #333;
+  border: none;
+  padding: 0.35rem 0.6rem;
+  border-radius: 4px;
+  cursor: pointer;
+  font-size: 0.85rem;
+  transition: background-color 0.2s ease;
+
+  &:hover {
+    background-color: #cfcfcf;
+  }
+}
+
 .cancelButton {
   background-color: transparent;
   border: none;
@@ -131,18 +194,19 @@
   font-size: 1.1rem;
   font-weight: bold;
   cursor: pointer;
-  display: flex;
-  align-items: center;
-  justify-content: center;
   width: 1.5rem;
   height: 1.5rem;
-  margin-left: 0.2rem;
   border-radius: 50%;
   transition: all 0.2s ease;
+  margin-left: auto;
 
   &:hover {
     background-color: var.$color-gray-200;
     color: var.$color-danger;
+  }
+
+  @media (max-width: 480px) {
+    align-self: flex-end;
   }
 }
 

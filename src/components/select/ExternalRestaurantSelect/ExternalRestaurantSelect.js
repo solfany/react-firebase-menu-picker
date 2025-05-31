@@ -8,7 +8,7 @@ import { useVoteData } from "../../../context/VoteProvider";
 import useToast from "../../../hooks/useToast";
 
 const ExternalRestaurantSelect = ({ user, onComplete }) => {
-  const { setWatchTemp } = useVoteData();
+  const { startWatching, stopWatching } = useVoteData();
   const { showToast } = useToast();
 
   const today = new Date();
@@ -21,25 +21,23 @@ const ExternalRestaurantSelect = ({ user, onComplete }) => {
 
   const getUserInfo = (name) => users.find((u) => u.name === name) || {};
 
-  // 처음 진입 시 이미 투표한 값 불러오기
   useEffect(() => {
     const fetchUserVote = async () => {
       const voteRef = ref(database, `votes/${todayKey}/userVotes/${user}`);
       const snapshot = await get(voteRef);
-
       if (snapshot.exists()) {
         const data = snapshot.val();
-        setSelectedCategory(data.menu); // 이미 투표한 카테고리로 표시
+        setSelectedCategory(data.menu);
       }
     };
-
     fetchUserVote();
   }, [user, todayKey]);
 
   const handleSelect = async (categoryLabel) => {
     const userInfo = getUserInfo(user);
-    if (!userInfo.name)
+    if (!userInfo.name) {
       return showToast("사용자 정보를 찾을 수 없습니다.", 3000);
+    }
 
     const voteRef = ref(database, `votes/${todayKey}/userVotes/${user}`);
     const existing = await get(voteRef);
@@ -74,6 +72,10 @@ const ExternalRestaurantSelect = ({ user, onComplete }) => {
     const summarySnap = await get(summaryRef);
     await set(summaryRef, (summarySnap.exists() ? summarySnap.val() : 0) + 1);
 
+    // 짧은 시간만 리스닝
+    startWatching();
+    setTimeout(() => stopWatching(), 5000);
+
     await set(voteRef, {
       name: userInfo.name,
       department: userInfo.department,
@@ -82,8 +84,6 @@ const ExternalRestaurantSelect = ({ user, onComplete }) => {
     });
 
     setSelectedCategory(categoryLabel);
-    setWatchTemp(true);
-
     setTimeout(() => onComplete(), 2000);
   };
 
