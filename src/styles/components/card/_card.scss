@@ -26,6 +26,11 @@
     padding: var.$padding-md;
     white-space: normal;
   }
+  @media (max-width: var.$breakpoint-sm) {
+    padding: 0;
+    border: none;
+    box-shadow: none;
+  }
 }
 
 .inner-auto-card {
