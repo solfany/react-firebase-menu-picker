@@ -183,3 +183,157 @@
     }
   }
 }
+
+.lunch-modal-overlay {
+  position: fixed;
+  inset: 0;
+  background-color: rgba(0, 0, 0, 0.45);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 1000;
+  padding: var.$padding-md;
+  animation: fadeIn 0.3s ease forwards;
+}
+
+.lunch-modal {
+  width: 100%;
+  max-width: 400px;
+  background: var.$color-white;
+  border-radius: var.$radius-md;
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.15);
+  overflow: hidden;
+  animation: slideIn 0.3s ease forwards;
+
+  &__header {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: var.$padding-sm var.$padding-md;
+    border-bottom: 1px solid var.$color-gray-100;
+  }
+
+  &__title {
+    font-size: var.$font-size-header-sm;
+    font-weight: 600;
+    color: var.$text-color;
+  }
+
+  &__close-btn {
+    background: none;
+    border: none;
+    font-size: 1.2rem;
+    color: var.$text-subtle;
+    cursor: pointer;
+    padding: 0.2rem;
+    border-radius: 50%;
+
+    &:hover {
+      background-color: var.$color-gray-200;
+      color: var.$color-primary;
+    }
+  }
+
+  &__content {
+    padding: var.$padding-md;
+    display: flex;
+    flex-direction: column;
+    gap: var.$gap-sm;
+  }
+
+  &__button {
+    padding: 0.6rem 1rem;
+    font-size: 0.95rem;
+    border: none;
+    border-radius: var.$radius-sm;
+    background-color: var.$color-primary;
+    color: white;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+
+    &:hover {
+      background-color: darken(var.$color-primary, 10%);
+    }
+
+    &--cancel {
+      background-color: var.$color-gray-200;
+      color: var.$text-subtle;
+      margin-top: var.$gap-xs;
+
+      &:hover {
+        background-color: var.$color-gray-300;
+      }
+    }
+  }
+}
+.statusBadge {
+  margin-left: auto;
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  font-weight: 500;
+  border-radius: var.$radius-pill;
+  background-color: var.$color-gray-200;
+  color: var.$text-subtle;
+  flex-shrink: 0;
+
+  &.출근 {
+    background-color: #d1fae5;
+    color: #047857;
+  }
+
+  &.외근 {
+    background-color: #e0f2fe;
+    color: #0369a1;
+  }
+
+  &.휴가 {
+    background-color: #fee2e2;
+    color: #b91c1c;
+  }
+
+  &.점심\ 제외 {
+    background-color: #fef9c3;
+    color: #92400e;
+  }
+}
+
+// 애니메이션
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideIn {
+  from {
+    transform: translateY(-16px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+// 반응형 대응
+@media (max-width: var.$breakpoint-sm) {
+  .lunch-modal {
+    max-width: 100%;
+    border-radius: var.$radius-sm;
+
+    &__content {
+      padding: var.$padding-sm;
+    }
+
+    &__title {
+      font-size: var.$font-size-header-xs;
+    }
+
+    &__button {
+      font-size: 0.9rem;
+    }
+  }
+}
