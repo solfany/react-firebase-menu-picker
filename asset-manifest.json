@@ -1,14 +1,13 @@
 {
   "files": {
-    "main.css": "/react-firebase-menu-picker/static/css/main.81b92ffe.css",
-    "main.js": "/react-firebase-menu-picker/static/js/main.75532efd.js",
-    "static/media/foodfriedegg.png": "/react-firebase-menu-picker/static/media/foodfriedegg.4b095c8c6f01c9918646.png",
+    "main.css": "/react-firebase-menu-picker/static/css/main.9f4573b4.css",
+    "main.js": "/react-firebase-menu-picker/static/js/main.d1709d06.js",
     "index.html": "/react-firebase-menu-picker/index.html",
-    "main.81b92ffe.css.map": "/react-firebase-menu-picker/static/css/main.81b92ffe.css.map",
-    "main.75532efd.js.map": "/react-firebase-menu-picker/static/js/main.75532efd.js.map"
+    "main.9f4573b4.css.map": "/react-firebase-menu-picker/static/css/main.9f4573b4.css.map",
+    "main.d1709d06.js.map": "/react-firebase-menu-picker/static/js/main.d1709d06.js.map"
   },
   "entrypoints": [
-    "static/css/main.81b92ffe.css",
-    "static/js/main.75532efd.js"
+    "static/css/main.9f4573b4.css",
+    "static/js/main.d1709d06.js"
   ]
 }
