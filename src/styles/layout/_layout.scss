@@ -6,10 +6,13 @@
   flex-direction: column;
   block-size: 100%;
   min-height: 100vh;
+    margin: 0;
+  padding: 0;
 }
 
 .container {
-  @include container;
+  margin: -8px;
+  padding: 0;
 }
 /* ✅ 글로벌 오버레이 정의 (전체 흐림용 배경) */
 .global-menu-overlay {
