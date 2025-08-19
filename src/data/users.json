@@ -1,24 +1,5 @@
 [
-  { "name": "정태수", "department": "부사장님" },
-  { "name": "방영희", "department": "관리부" },
-  { "name": "강영국", "department": "관리부" },
-  { "name": "김재환", "department": "운영부" },
-  { "name": "이윤희", "department": "운영부" },
-  { "name": "홍준호", "department": "운영부" },
-  { "name": "윤영한", "department": "운영부" },
-  { "name": "최가영", "department": "마케팅부" },
-  { "name": "남민주", "department": "마케팅부" },
-  { "name": "나연", "department": "마케팅부" },
-  { "name": "박대휘", "department": "개발사업부" },
-  { "name": "김솔비", "department": "개발사업부" },
-  { "name": "손창용", "department": "개발사업부" },
-  { "name": "왕희도", "department": "개발사업부" },
-  { "name": "오채연", "department": "개발사업부" },
-  { "name": "윤지은", "department": "인테리어사업부" },
-  { "name": "한성욱", "department": "배차관리부" },
-  { "name": "박효준", "department": "배차관리부" },
-  { "name": "이종일", "department": "배차관리부" },
-  { "name": "송현주", "department": "배차관리부" },
-  { "name": "윤홍경", "department": "배차관리부" },
-  { "name": "박정빈", "department": "배차관리부" }
+  { "name": "김솔비", "department": "김솔솔" },
+  { "name": "김아무개", "department": "관리부" }
+
 ]
